@@ -1,0 +1,40 @@
+.navbar-brand{
+    color: white !important;
+    font-size: 20px;
+}
+
+img{
+    width: 55px;
+    height: 60px;
+}
+
+.title{
+    margin-right: 100px;
+}
+
+.navbar-link{
+    color: #fff !important;
+}
+
+.navbar-inverse{
+    border-radius: 0px;
+    height: fit-content;
+    margin-bottom: 0px;
+    width: 100% !important;
+    position: fixed;
+    z-index: 1;
+}
+
+.btn{
+    margin-right: 20px;
+    font-weight: 500;
+    color: #fff;
+}
+
+.navbar-btn{
+    margin-top: -5px;
+}
+
+.nav:active{
+    background-color: transparent !important;
+}

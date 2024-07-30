@@ -1,0 +1,13 @@
+.project-container{
+    top: 0;
+    margin-top: 3%;
+    padding: 20px;
+    width: 100%;
+    position: absolute;
+}
+
+@media (max-width: 768px) {
+    .project-container{
+        position: relative;
+    }
+}

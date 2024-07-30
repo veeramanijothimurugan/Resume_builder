@@ -1,0 +1,61 @@
+.contact-container{
+    top: 0;
+    margin-top: 3%;
+    padding: 20px;
+    width: 100%;
+    position: absolute;
+}
+
+@media (max-width: 768px) {
+    .contact-container{
+        position: relative;
+    }
+
+}
+
+.title{
+    color: #003464;
+    font-weight: 600;
+}
+
+.answer{
+    color: #003464;
+    font-weight: 300;
+}
+
+.alart{
+    margin-top: 30px;
+    color: tomato;
+    font-weight: 600;
+}
+
+.lable{
+    margin-top: 20px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+input{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid;
+}
+
+.inputfeild{
+    width: 100%;
+}
+
+.next-btn{
+    margin-top: 20px;
+    background-color: #28a917;
+    padding: 10px 15px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    transition: .5s;
+    width: 200px !important;
+    float: right;
+    margin-right: 10px;
+}
+
+.next-btn:hover{
+    background-color: #28a91789;
+}

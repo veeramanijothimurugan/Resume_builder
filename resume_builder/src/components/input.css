@@ -1,0 +1,92 @@
+.traking{
+    background-color: #003464;
+    color: hsl(0, 0%, 100%);
+    padding: 50px;
+    padding-top: 7.5%;
+    overflow: auto;
+    position: fixed;
+}
+
+@media (max-width: 768px) {
+    .traking{
+        margin-top: 230px;
+        position: relative;
+    }
+}
+
+.steps{
+    font-weight: 500;
+    background-color: #fff;
+    color: black;
+    float: left;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.input-container{
+    margin-top: 0px;
+}
+
+.progress-bar{
+    background-color: #ffffff28;
+    width: 5px;
+    height: 320px;
+    position: absolute;
+    margin-left: 8px;
+    transition: .5s;
+}
+
+.step{
+    margin-bottom: 30px;
+    font-size: 15px;
+}
+
+.finish{
+    width: 20px;
+    height: 20px;
+    margin-top: -3px;
+}
+
+.completion{
+    background-color: #fff;
+    width: 100%;
+    height: 10px;
+    border-radius: 50px;
+    padding: 1px;
+}
+
+.scal{
+    background-color: rgba(45, 193, 65, 0.912);
+    width: 10%;
+    height: 7.5px;
+    border-radius: 50px;
+    transition: .5s;
+}
+
+.precentage{
+    margin-top: 10px;
+    float: right;
+}
+
+.copyrights{
+    margin-top: 50%;
+    float: inline-end;
+    font-size: 12px;
+}
+
+.copyrights a{
+    color: #00fff2;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+.cnt-icon{
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    overflow: hidden;
+    background-color: #fff;
+}
