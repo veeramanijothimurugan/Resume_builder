@@ -1,10 +1,26 @@
 .headings{
-    margin-top: 70px;
     color: rebeccapurple;
-    margin-bottom: -5px;
+}
+
+.details-container{
+    margin-top: 20px;
 }
 
 .proAdd{
     margin-top: 20px;
     width: 100%;
+}
+
+.added{
+    text-align: center;
+    color: green;
+    margin-bottom: 0px;
+}
+
+.verify{
+    color: white;
+    font-size: 15px;
+    background-color: green;
+    padding: 5px 10px;
+    border-radius: 50px;
 }

@@ -1,11 +1,25 @@
 import React, { useState } from "react";
 import "./css/project.css";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus} from "@fortawesome/free-solid-svg-icons";
+import { faArrowAltCircleRight, faPlus} from "@fortawesome/free-solid-svg-icons";
 import ProjectDetail from "./ProjectDetail";
 
 const Projects = () => {
-  const [projectNum, setProjectNum] = useState(0);
+  const [num, setNum] = useState(0);
+  const [component,setComponent] = useState([]);
+
+  const handleNum = (event) =>{
+    setNum(parseInt(event.target.value));
+  }
+
+  const addProject = (event) =>{
+    event.preventDefault();
+    if(!isNaN(num) && num > 0){
+      setComponent([...Array(num).keys()]);
+      console.log(component);
+    }
+  }
 
   return (
     <>
@@ -22,23 +36,30 @@ const Projects = () => {
               ability to work independently.
             </h4>
           </div>
-          <form>
+          <form onSubmit={addProject}>
             <div className="project-input">
               <p className="lable">Enter no.of. Project</p>
               <input
               placeholder="e.g. 2"
-              className="col-lg-10 col-md-10 col-sm-10 col-xs-10 skill-input"
-              type="text"
+              className="col-lg-10 col-md-10 col-sm-9 col-xs-8 skill-input"
+              type="number" onChange={handleNum}
             />
             <button
-              className="add-btn col-lg-2 col-md-2 col-sm-2 col-xs-2 add"
+              className="add-btn col-lg-2 col-md-2 col-sm-3 col-xs-4 add"
               type="submit"
             >
               ADD <FontAwesomeIcon icon={faPlus} />
             </button>
             </div>
           </form>
-          <ProjectDetail/>
+          {component.map((_,index)=>(
+            <ProjectDetail key={index} index={index}/>
+          ))}
+          {
+            component.length > 0 && <Link to="/certifications">
+            <button className="btn next-btn">Next <FontAwesomeIcon icon={faArrowAltCircleRight}/></button>
+          </Link>
+          }
         </div>
       </div>
     </>

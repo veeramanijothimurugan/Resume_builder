@@ -3,7 +3,7 @@ import "./css/skills.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faArrowAltCircleRight, faPlus, faXmark } from "@fortawesome/free-solid-svg-icons";
 
 const Skills = () => {
   const [input, setInput] = useState("");
@@ -82,7 +82,7 @@ const Skills = () => {
                 </ul>
               </div>
               <Link to="/projects">
-                <button className="btn next-btn">Next</button>
+                <button className="btn next-btn">Next <FontAwesomeIcon icon={faArrowAltCircleRight}/></button>
               </Link>
             </>
           )}

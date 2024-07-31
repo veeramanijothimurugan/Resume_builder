@@ -1,6 +1,8 @@
 import React from 'react'
 import "./css/education.css";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus,faCheck, faArrowAltCircleRight} from "@fortawesome/free-solid-svg-icons";
 
 const Education = () => {
   return (
@@ -155,7 +157,7 @@ const Education = () => {
             </div>
           </div>
           <Link to="/skills">
-            <button className='btn next-btn'>Next</button>
+            <button className='btn next-btn'>Next <FontAwesomeIcon icon={faArrowAltCircleRight}/></button>
           </Link>
         </div>
       </div>

@@ -1,6 +1,8 @@
 import React from "react";
 import "./css/heading.css";
 import { Link, useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus,faCheck, faArrowAltCircleRight} from "@fortawesome/free-solid-svg-icons";
 
 const Heading = () => {
   // const navigate = useNavigate();
@@ -85,7 +87,7 @@ const Heading = () => {
             />
           </div>
           <Link to="/objective">
-            <button className="btn next-btn">Next</button>
+          <button className="btn next-btn">Next <FontAwesomeIcon icon={faArrowAltCircleRight}/></button>
           </Link>
         </div>
       </div>
