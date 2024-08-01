@@ -23,6 +23,7 @@ const ProjectDetail = ({index}) => {
   }
 
   const handleProjects = (e) =>{
+    console.log("buttonClicked");
     e.preventDefault();
     setProjects([...projects,inputProject]);
     setAdded(true);

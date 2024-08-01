@@ -4,7 +4,12 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus,faCheck, faArrowAltCircleRight} from "@fortawesome/free-solid-svg-icons";
 
-const objective = () => {
+const objective = ({markAsSubmited}) => {
+
+  const handleObjective = (e) =>{
+    e.preventDefault();
+    markAsSubmited('heading');
+  }
   return (
     <>
       <div className="objective-container container-fluid">
@@ -30,7 +35,7 @@ const objective = () => {
             ></textarea>
           </div>
           <Link to="/education">
-            <button className="btn next-btn">Next<FontAwesomeIcon icon={faArrowAltCircleRight}/></button>
+            <button className="btn next-btn" onClick={handleObjective}>Next<FontAwesomeIcon icon={faArrowAltCircleRight}/></button>
           </Link>
         </div>
       </div>

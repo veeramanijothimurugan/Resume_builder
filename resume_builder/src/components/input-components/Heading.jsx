@@ -2,14 +2,18 @@ import React from "react";
 import "./css/heading.css";
 import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus,faCheck, faArrowAltCircleRight} from "@fortawesome/free-solid-svg-icons";
+import {
+  faPlus,
+  faCheck,
+  faArrowAltCircleRight,
+} from "@fortawesome/free-solid-svg-icons";
 
-const Heading = () => {
-  // const navigate = useNavigate();
-
-  // const handleNavigation = () =>{
-  //     navigate('/objective');
-  // }
+const Heading = ({ markAsSubmited }) => {
+  const handleSubmit = (e) =>{
+    console.log("buttonClicked");
+    e.preventDefault();
+    markAsSubmited('heading');
+  }
 
   return (
     <div className=" contact-container container">
@@ -22,74 +26,78 @@ const Heading = () => {
           Please include an email address and phone number.
         </h4>
         <p className="alart">* indicates a require field</p>
-        <div className="row inputfeild container-fluid">
-          <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-            <p className="lable">
-              First name <span className="alart">*</span>
-            </p>
-            <input placeholder="e.g. Veeramani" type="text" />
+        <form onSubmit={handleSubmit}>
+          <div className="row inputfeild container-fluid">
+            <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <p className="lable">
+                First name <span className="alart">*</span>
+              </p>
+              <input placeholder="e.g. Veeramani" type="text" />
+            </div>
+            <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <p className="lable">
+                Last name<span className="alart">*</span>
+              </p>
+              <input placeholder="e.g. Jothimurugan" type="text" />
+            </div>
+            <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <p className="lable">
+                Jobtitle<span className="alart">*</span>
+              </p>
+              <input placeholder="e.g. Web Developer" type="text" />
+            </div>
+            <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <p className="lable">
+                Email<span className="alart">*</span>
+              </p>
+              <input
+                placeholder="e.g. veeramanijothimurugan@gmail.com"
+                type="text"
+              />
+            </div>
+            <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <p className="lable">
+                Phone<span className="alart">*</span>
+              </p>
+              <input placeholder="e.g. +91 8072640512" type="text" />
+            </div>
+            <div className="col-lg-6 col-md-6">
+              <p className="lable">
+                City<span className="alart">*</span>
+              </p>
+              <input placeholder="e.g. Aruppukottai" type="text" />
+            </div>
+            <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <p className="lable">
+                Pin code<span className="alart">*</span>
+              </p>
+              <input placeholder="e.g. 626101" type="text" />
+            </div>
+            <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <p className="lable">
+                Github<span className="alart">*</span>
+              </p>
+              <input
+                placeholder="e.g. https://github.com/veeramanijothimurugan"
+                type="text"
+              />
+            </div>
+            <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <p className="lable">
+                LinkedIn<span className="alart">*</span>
+              </p>
+              <input
+                placeholder="e.g. https://www.linkedin.com/in/veeramanijothimurugan/"
+                type="text"
+              />
+            </div>
+            <Link to="/objective">
+              <button className="btn next-btn" type="submit">
+                Next <FontAwesomeIcon icon={faArrowAltCircleRight} />
+              </button>
+            </Link>
           </div>
-          <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-            <p className="lable">
-              Last name<span className="alart">*</span>
-            </p>
-            <input placeholder="e.g. Jothimurugan" type="text" />
-          </div>
-          <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-            <p className="lable">
-              Jobtitle<span className="alart">*</span>
-            </p>
-            <input placeholder="e.g. Web Developer" type="text" />
-          </div>
-          <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-            <p className="lable">
-              Email<span className="alart">*</span>
-            </p>
-            <input
-              placeholder="e.g. veeramanijothimurugan@gmail.com"
-              type="text"
-            />
-          </div>
-          <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-            <p className="lable">
-              Phone<span className="alart">*</span>
-            </p>
-            <input placeholder="e.g. +91 8072640512" type="text" />
-          </div>
-          <div className="col-lg-6 col-md-6">
-            <p className="lable">
-              City<span className="alart">*</span>
-            </p>
-            <input placeholder="e.g. Aruppukottai" type="text" />
-          </div>
-          <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-            <p className="lable">
-              Pin code<span className="alart">*</span>
-            </p>
-            <input placeholder="e.g. 626101" type="text" />
-          </div>
-          <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-            <p className="lable">
-              Github<span className="alart">*</span>
-            </p>
-            <input
-              placeholder="e.g. https://github.com/veeramanijothimurugan"
-              type="text"
-            />
-          </div>
-          <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <p className="lable">
-              LinkedIn<span className="alart">*</span>
-            </p>
-            <input
-              placeholder="e.g. https://www.linkedin.com/in/veeramanijothimurugan/"
-              type="text"
-            />
-          </div>
-          <Link to="/objective">
-          <button className="btn next-btn">Next <FontAwesomeIcon icon={faArrowAltCircleRight}/></button>
-          </Link>
-        </div>
+        </form>
       </div>
     </div>
   );

@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleRight, faPlus} from "@fortawesome/free-solid-svg-icons";
 import ProjectDetail from "./ProjectDetail";
 
-const Projects = () => {
+const Projects = ({markedAsSubmit}) => {
   const [num, setNum] = useState(0);
   const [component,setComponent] = useState([]);
 
@@ -17,8 +17,8 @@ const Projects = () => {
     event.preventDefault();
     if(!isNaN(num) && num > 0){
       setComponent([...Array(num).keys()]);
-      console.log(component);
     }
+    markedAsSubmit('project');
   }
 
   return (
@@ -38,7 +38,7 @@ const Projects = () => {
           </div>
           <form onSubmit={addProject}>
             <div className="project-input">
-              <p className="lable">Enter no.of. Project</p>
+              <p className="lable">Enter no.of. Projects <span className="alart">*</span></p>
               <input
               placeholder="e.g. 2"
               className="col-lg-10 col-md-10 col-sm-9 col-xs-8 skill-input"

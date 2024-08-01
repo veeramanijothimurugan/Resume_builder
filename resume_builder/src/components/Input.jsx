@@ -1,8 +1,11 @@
 import React from "react";
 import "./input.css";
 import Heading from "./input-components/Heading";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus, faCheck, faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 
-const Input = () => {
+const Input = ({submitedPage}) => {
+  
   return (
     <>
       <section>
@@ -11,25 +14,25 @@ const Input = () => {
             <div className="col-lg-3 col-md-3 col-sm-3 vh-100 traking">
               <div className="progress-bar"></div>
               <p className="step">
-                <span className="steps">1</span> Heading
+                <span className="steps">{submitedPage.heading ? <FontAwesomeIcon className="check" icon={faCheckCircle}/>:"1"}</span> Heading
               </p>
               <p className="step">
-                <span className="steps">2</span> Professional objective
+                <span className="steps">{submitedPage.objective ? <FontAwesomeIcon className="check" icon={faCheckCircle}/>:"2"}</span> Professional objective
               </p>
               <p className="step">
-                <span className="steps">3</span> Education
+                <span className="steps">{submitedPage.education ? <FontAwesomeIcon className="check" icon={faCheckCircle}/>:"3"}</span> Education
               </p>
               <p className="step">
-                <span className="steps">4</span> Skills
+                <span className="steps">{submitedPage.skills ? <FontAwesomeIcon className="check" icon={faCheckCircle}/>:"4"}</span> Skills
               </p>
               <p className="step">
-                <span className="steps">5</span> Projects
+                <span className="steps">{submitedPage.projects ? <FontAwesomeIcon className="check" icon={faCheckCircle}/>:"5"}</span> Projects
               </p>
               <p className="step">
-                <span className="steps">7</span> Certifications
+                <span className="steps">{submitedPage.certificate ? <FontAwesomeIcon className="check" icon={faCheckCircle}/>:"6"}</span> Certifications
               </p>
               <p className="step">
-                <span className="steps">8</span> Extracurricular activites
+                <span className="steps">{submitedPage.extracurricular ? <FontAwesomeIcon className="check" icon={faCheckCircle}/>:"7"}</span> Extracurricular activites
               </p>
               <p>Resume completeness</p>
               <div className="completion">

@@ -52,7 +52,7 @@ const Certifications = () => {
           {component.map((_,index)=>(
             <CertificateDetails index={index} key={index}/>
           ))}
-          {component.length>0 && <Link to="/extracurricular-activities"><button className='btn next-btn'>Next <FontAwesomeIcon icon={faArrowAltCircleRight}/></button></Link>}
+          {component.length>0 && <Link to="/extracurricular"><button className='btn next-btn'>Next <FontAwesomeIcon icon={faArrowAltCircleRight}/></button></Link>}
         </div>
       </div>
     </>
