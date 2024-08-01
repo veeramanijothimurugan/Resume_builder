@@ -8,7 +8,7 @@ import {
 import { Link } from "react-router-dom";
 import "./css/excurr.css"
 
-const excurr = () => {
+const excurr = ({markAsSubmited,completeness}) => {
   const [activity, setActivity] = useState("");
   const [activites, setActivities] = useState([]);
   const [finalize,setFinalize] = useState(false);
@@ -66,8 +66,8 @@ const excurr = () => {
               </ul>
             ))}
           </div>}
-          {activites.length>0&&!finalize && <Link to="/extracurricular-activities"><button className='btn next-btn' onClick={()=>{setFinalize(true)}}>Next <FontAwesomeIcon icon={faArrowAltCircleRight}/></button></Link>}
-          {finalize && <button className="finalize">Finalize <FontAwesomeIcon icon={faFileCircleCheck}/></button>}
+          {activites.length>0&&!finalize &&<button className='btn next-btn' onClick={()=>{setFinalize(true);markAsSubmited('extracurricular');completeness(100)}}>Next <FontAwesomeIcon icon={faArrowAltCircleRight}/></button>}
+          {finalize && <Link to="/resume"><button className="finalize">Finalize <FontAwesomeIcon icon={faFileCircleCheck}/></button></Link>}
         </div>
       </div>
     </>

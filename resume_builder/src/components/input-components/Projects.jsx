@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleRight, faPlus} from "@fortawesome/free-solid-svg-icons";
 import ProjectDetail from "./ProjectDetail";
 
-const Projects = ({markedAsSubmit}) => {
+const Projects = ({markAsSubmited,trackLength,completeness}) => {
   const [num, setNum] = useState(0);
   const [component,setComponent] = useState([]);
 
@@ -18,7 +18,6 @@ const Projects = ({markedAsSubmit}) => {
     if(!isNaN(num) && num > 0){
       setComponent([...Array(num).keys()]);
     }
-    markedAsSubmit('project');
   }
 
   return (
@@ -57,7 +56,7 @@ const Projects = ({markedAsSubmit}) => {
           ))}
           {
             component.length > 0 && <Link to="/certifications">
-            <button className="btn next-btn">Next <FontAwesomeIcon icon={faArrowAltCircleRight}/></button>
+            <button className="btn next-btn" onClick={()=>{markAsSubmited('projects');trackLength(260);completeness(71.4)}}>Next <FontAwesomeIcon icon={faArrowAltCircleRight}/></button>
           </Link>
           }
         </div>

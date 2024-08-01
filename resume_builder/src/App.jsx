@@ -20,7 +20,7 @@ function App() {
     education: false,
     skills: false,
     projects: false,
-    certifications: false,
+    certificate: false,
     extracurricular: false,
   });
 
@@ -28,24 +28,36 @@ function App() {
     setSubmitedPage((prev) =>({...prev,[page] : true}));
   }
 
+  const [length,setLength] = useState(0);
+
+  const trackLength = (divLength)=>{
+    setLength(divLength);
+  }
+
+  const [completeLen,setCompleteLen] = useState(0);
+
+  const completeness = (comLen) =>{
+    setCompleteLen(comLen);
+  }
+
   return (
     <>
       <Router>
         <Navbar />
-        <Input submitedPage={submitedPage}/>
+        <Input submitedPage={submitedPage} length={length} completeLen={completeLen}/>
         <Routes>
-          <Route path="/" element={<Home markAsSubmited={markAsSubmited}/>} ></Route>
-          <Route path="/resume" element={<Resume markAsSubmited={markAsSubmited}/>} ></Route>
-          <Route path="/education" element={<Education markAsSubmited={markAsSubmited}/>} ></Route>
-          <Route path="/heading" element={<Heading markAsSubmited={markAsSubmited}/>}></Route>
-          <Route path="/objective" element={<Objective markAsSubmited={markAsSubmited}/>} ></Route>
-          <Route path="/projects" element={<Projects markAsSubmited={markAsSubmited}/>} ></Route>
-          <Route path="/certifications" element={<Certifications markAsSubmited={markAsSubmited}/>}></Route>
+          <Route path="/" element={<Home markAsSubmited={markAsSubmited} trackLength={trackLength} completeness={completeness}/>} ></Route>
+          <Route path="/resume" element={<Resume markAsSubmited={markAsSubmited} trackLength={trackLength} completeness={completeness}/>} ></Route>
+          <Route path="/education" element={<Education markAsSubmited={markAsSubmited} trackLength={trackLength} completeness={completeness}/>} ></Route>
+          <Route path="/heading" element={<Heading markAsSubmited={markAsSubmited} trackLength={trackLength} completeness={completeness}/>}></Route>
+          <Route path="/objective" element={<Objective markAsSubmited={markAsSubmited} trackLength={trackLength} completeness={completeness}/>} ></Route>
+          <Route path="/projects" element={<Projects markAsSubmited={markAsSubmited} trackLength={trackLength} completeness={completeness}/>} ></Route>
+          <Route path="/certifications" element={<Certifications markAsSubmited={markAsSubmited} trackLength={trackLength} completeness={completeness}/>}></Route>
           <Route
             path="/extracurricular"
-            element={<Extracurricular />} markAsSubmited={markAsSubmited}
+            element={<Extracurricular markAsSubmited={markAsSubmited} trackLength={trackLength} completeness={completeness}/>}
           ></Route>
-          <Route path="/skills" element={<Skills />} markAsSubmited={markAsSubmited}></Route>
+          <Route path="/skills" element={<Skills markAsSubmited={markAsSubmited} trackLength={trackLength} completeness={completeness}/>} ></Route>
         </Routes>
       </Router>
     </>

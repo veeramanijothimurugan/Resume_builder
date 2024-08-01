@@ -8,12 +8,11 @@ import {
   faArrowAltCircleRight,
 } from "@fortawesome/free-solid-svg-icons";
 
-const Heading = ({ markAsSubmited }) => {
-  const handleSubmit = (e) =>{
+const Heading = ({ markAsSubmited,trackLength,completeness}) => {
+  const handleSubmit = (e) => {
     console.log("buttonClicked");
     e.preventDefault();
-    markAsSubmited('heading');
-  }
+  };
 
   return (
     <div className=" contact-container container">
@@ -26,7 +25,7 @@ const Heading = ({ markAsSubmited }) => {
           Please include an email address and phone number.
         </h4>
         <p className="alart">* indicates a require field</p>
-        <form onSubmit={handleSubmit}>
+        <form>
           <div className="row inputfeild container-fluid">
             <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
               <p className="lable">
@@ -91,8 +90,8 @@ const Heading = ({ markAsSubmited }) => {
                 type="text"
               />
             </div>
-            <Link to="/objective">
-              <button className="btn next-btn" type="submit">
+            <Link to={"/objective"}>
+              <button className="btn next-btn" type="submit" onClick={()=>{markAsSubmited("heading");trackLength(52);completeness(14.28)}}>
                 Next <FontAwesomeIcon icon={faArrowAltCircleRight} />
               </button>
             </Link>

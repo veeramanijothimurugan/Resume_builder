@@ -33,7 +33,7 @@
 .progress-bar{
     background-color: #ffffff28;
     width: 5px;
-    height: 320px;
+    height: 0px;
     position: absolute;
     margin-left: 8px;
     transition: .5s;
@@ -60,7 +60,6 @@
 
 .scal{
     background-color: rgba(45, 193, 65, 0.912);
-    width: 10%;
     height: 7.5px;
     border-radius: 50px;
     transition: .5s;

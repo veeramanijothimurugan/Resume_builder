@@ -4,7 +4,7 @@ import Heading from "./input-components/Heading";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faCheck, faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 
-const Input = ({submitedPage}) => {
+const Input = ({submitedPage,length,completeLen}) => {
   
   return (
     <>
@@ -12,7 +12,7 @@ const Input = ({submitedPage}) => {
         <div className="input-container container-fluid px-0">
           <div className="row g-0">
             <div className="col-lg-3 col-md-3 col-sm-3 vh-100 traking">
-              <div className="progress-bar"></div>
+              <div className="progress-bar" style={{height: length}}></div>
               <p className="step">
                 <span className="steps">{submitedPage.heading ? <FontAwesomeIcon className="check" icon={faCheckCircle}/>:"1"}</span> Heading
               </p>
@@ -36,8 +36,8 @@ const Input = ({submitedPage}) => {
               </p>
               <p>Resume completeness</p>
               <div className="completion">
-                <div className="scal"></div>
-                <p className="precentage">10%</p>
+                <div className="scal" style={{width: completeLen+"%"}}></div>
+                <p className="precentage">{Math.round(completeLen)}%</p>
               </div>
               <br />
               <div className="copyrights">

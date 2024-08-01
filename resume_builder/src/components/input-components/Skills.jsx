@@ -5,7 +5,7 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleRight, faPlus, faXmark } from "@fortawesome/free-solid-svg-icons";
 
-const Skills = () => {
+const Skills = ({markAsSubmited,trackLength,completeness}) => {
   const [input, setInput] = useState("");
   const [skills, setSkills] = useState([]);
 
@@ -82,7 +82,7 @@ const Skills = () => {
                 </ul>
               </div>
               <Link to="/projects">
-                <button className="btn next-btn">Next <FontAwesomeIcon icon={faArrowAltCircleRight}/></button>
+                <button className="btn next-btn" onClick={()=>{markAsSubmited('skills'); trackLength(208);completeness(57.12)} }>Next <FontAwesomeIcon icon={faArrowAltCircleRight}/></button>
               </Link>
             </>
           )}
