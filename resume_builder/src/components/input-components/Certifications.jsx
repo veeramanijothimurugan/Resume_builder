@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus,faCheck, faArrowAltCircleRight} from "@fortawesome/free-solid-svg-icons";
 import CertificateDetails from './CertificateDetails';
+import { Link } from 'react-router-dom';
 
 const Certifications = () => {
   const [num,setNum]=useState(0);
@@ -49,9 +50,9 @@ const Certifications = () => {
             </div>
           </form>
           {component.map((_,index)=>(
-            <CertificateDetails key={index}/>
+            <CertificateDetails index={index} key={index}/>
           ))}
-          {component.length>0 && <button className='btn next-btn'>Next <FontAwesomeIcon icon={faArrowAltCircleRight}/></button>}
+          {component.length>0 && <Link to="/extracurricular-activities"><button className='btn next-btn'>Next <FontAwesomeIcon icon={faArrowAltCircleRight}/></button></Link>}
         </div>
       </div>
     </>

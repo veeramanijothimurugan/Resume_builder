@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../assets/images/logo.png";
 import "../components/navbar.css";
-import { Link } from "react-router-dom";
+import { Link, useActionData } from "react-router-dom";
 
 const Navbar = () => {
+  const [buildCV,setBuildCV] = useState(false);
+
   return (
     <>
       <nav className="navbar navbar-inverse navbar-bottom-fixed">
@@ -19,7 +21,7 @@ const Navbar = () => {
             <li><a className="navbar-link" href="">About</a></li>
             <li><a className="navbar-link" href="">Contact</a></li>
               
-            <li><Link to="/heading"><button className="btn btn-primary navbar-btn navbar-right">Build your Resume</button></Link></li>
+            <li><Link to="/heading"><button className={buildCV ? "build btn btn-primary navbar-btn navbar-right":"btn btn-primary navbar-btn navbar-right"} onClick={()=>{setBuildCV(true)}}>Build your Resume</button></Link></li>
           </ul>
         </div>
       </nav>

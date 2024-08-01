@@ -1,0 +1,22 @@
+.activities{
+    border: 1px solid;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.activity{
+    list-style-type: none;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.finalize{
+    margin-top: 20px;
+    padding: 10px 15px;
+    float: right;
+    color: white;
+    margin-right: 10px;
+    border: none;
+    font-size: 20px;
+    background-color: green;
+}

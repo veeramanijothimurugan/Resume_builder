@@ -2,7 +2,7 @@ import {React,useState} from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus,faCheck} from "@fortawesome/free-solid-svg-icons";
 
-const CertificateDetails = () => {
+const CertificateDetails = ({index}) => {
   const [added, setAdded] = useState(false);
 
   const handleCertify = (e) =>{
@@ -12,7 +12,7 @@ const CertificateDetails = () => {
   return (
     <>
         <div className="details container-fluid">
-          <h4 className="heading">Certificate 1 {added&&<span className="verify"><FontAwesomeIcon icon={faCheck}/> ADDED</span>}</h4>
+          <h4 className="heading">Certificate {index+1} {added&&<span className="verify"><FontAwesomeIcon icon={faCheck}/> ADDED</span>}</h4>
           <div className="row">
             <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
               <p className="lable">Name</p>
@@ -40,7 +40,7 @@ const CertificateDetails = () => {
               </div>
             )}
           </div>
-          
+
         </div>
     </>
   );
