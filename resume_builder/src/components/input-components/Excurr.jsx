@@ -44,7 +44,7 @@ const excurr = ({markAsSubmited,completeness}) => {
           </div>
           <form onSubmit={handleActivities}>
             <div className="project-input">
-              <p className="lable">Enter your activity here.,</p>
+              <p className="lable">Enter your activity here <span className="alart">*</span></p>
               <input
                 onChange={handleActivity}
                 placeholder="e.g. Engaged in Inter-Department kabaddi and TCE Marathon ’22 - ’23."

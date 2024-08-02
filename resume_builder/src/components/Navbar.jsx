@@ -3,7 +3,7 @@ import logo from "../assets/images/logo.png";
 import "../components/navbar.css";
 import { Link, useActionData } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({InputTrack}) => {
   const [buildCV,setBuildCV] = useState(false);
 
   return (
@@ -21,7 +21,7 @@ const Navbar = () => {
             <li><a className="navbar-link" href="">About</a></li>
             <li><a className="navbar-link" href="">Contact</a></li>
               
-            <li><Link to="/heading"><button className={buildCV ? "build btn btn-primary navbar-btn navbar-right":"btn btn-primary navbar-btn navbar-right"} onClick={()=>{setBuildCV(true)}}>Build your Resume</button></Link></li>
+            <li><Link to="/heading"><button className={buildCV ? "build btn btn-primary navbar-btn navbar-right":"btn btn-primary navbar-btn navbar-right"} onClick={()=>{setBuildCV(true); InputTrack(true)}}>Build your Resume</button></Link></li>
           </ul>
         </div>
       </nav>

@@ -35,7 +35,7 @@ const Certifications = ({markAsSubmited,trackLength, completeness}) => {
           </div>
           <form onSubmit={handleComp}>
             <div className="project-input">
-              <p className="lable">Enter no.of. Certificate</p>
+              <p className="lable">Enter no.of. Certificate <span className="alart">*</span></p>
               <input onChange={handleNum}
               placeholder="e.g. 2"
               className="col-lg-10 col-md-10 col-sm-9 col-xs-8 skill-input"

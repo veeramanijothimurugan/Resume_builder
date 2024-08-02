@@ -27,6 +27,7 @@ const objective = ({markAsSubmited,trackLength,completeness}) => {
           </div>
           <p className="alart">* indicates a require field</p>
           <div className="text">
+            <h5>Enter your summary here <span className="alart">*</span></h5>
             <textarea
               placeholder="e.g. Skilled in crafting semantic and accessible HTML5. Proficient in responsive design using CSS3, Bootstrap including Flexbox and Grid. Strong in JavaScript ES6+ features, asynchronous programming, and API integration. Experienced in building React applications, utilizing hooks for state management."
               name=""

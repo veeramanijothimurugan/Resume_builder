@@ -40,13 +40,18 @@ function App() {
     setCompleteLen(comLen);
   }
 
+  const [showInput,setShowInput] = useState(false);
+  const InputTrack = (result) =>{
+    setShowInput(result);
+  }
+
   return (
     <>
       <Router>
-        <Navbar />
-        <Input submitedPage={submitedPage} length={length} completeLen={completeLen}/>
+        <Navbar InputTrack={InputTrack}/>
+        {showInput && <Input submitedPage={submitedPage} length={length} completeLen={completeLen}/>}
         <Routes>
-          <Route path="/" element={<Home markAsSubmited={markAsSubmited} trackLength={trackLength} completeness={completeness}/>} ></Route>
+          <Route path="/" element={<Home/>} ></Route>
           <Route path="/resume" element={<Resume markAsSubmited={markAsSubmited} trackLength={trackLength} completeness={completeness}/>} ></Route>
           <Route path="/education" element={<Education markAsSubmited={markAsSubmited} trackLength={trackLength} completeness={completeness}/>} ></Route>
           <Route path="/heading" element={<Heading markAsSubmited={markAsSubmited} trackLength={trackLength} completeness={completeness}/>}></Route>
