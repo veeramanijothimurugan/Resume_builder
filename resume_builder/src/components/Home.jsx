@@ -5,20 +5,16 @@ import "./home.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBusinessTime,
-  faCheckCircle,
-  faCheckDouble,
-  faCheckSquare,
-  faChildReaching,
-  faFileArrowUp,
+  faDownload,
+  faEdit,
   faFileCircleCheck,
-  faFlagCheckered,
+  faGears,
   faGraduationCap,
-  faSchool,
-  faScroll,
-  faStarOfLife,
+  faWandSparkles,
 } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
-const home = () => {
+const home = ({InputTrack}) => {
   return (
     <div className="home-container container">
       <div className="intro">
@@ -40,11 +36,11 @@ const home = () => {
       </div>
       <br />
       <div className="welcome container">
-        <h3 className="qus" style={{ fontWeight: 700 }}>
+        <h3 className="res-qus">
           ARE YOU A FRESHER LOOKING TO MAKE A STRONG IMPRESSION IN THE JOB
           MARKET?
         </h3>
-        <h4>
+        <p className="welcome-text">
           {" "}
           You've come to the right place. At{" "}
           <span style={{ color: "orangered", fontSize: "20px" }}>
@@ -52,7 +48,7 @@ const home = () => {
           </span>
           , we specialize in helping you craft the perfect resume that stands
           out and increases your chances of getting hired.
-        </h4>
+        </p>
       </div>
       <div className="why container">
         <h2 className="qus" style={{ fontWeight: 700 }}>
@@ -98,34 +94,60 @@ const home = () => {
           your resume looks great every time.
         </p>
       </div>
-      <div className="why container">
+      <div className="easy-container container">
         <h2 className="qus" style={{ fontWeight: 700 }}>
           EASY TO USE
         </h2>
-        <ul className="why-list row">
-          <li className="why-ans col-lg-4">
-            <FontAwesomeIcon className="double" icon={faGraduationCap} />
-            <br />
-            Enter Your Details: Fill in your personal information, education,
-            skills, and work experience. Our intuitive interface makes it easy
-            to input and organize your data.
-          </li>
-
-          <li className=" why-ans col-lg-3">
-            <FontAwesomeIcon className="double" icon={faBusinessTime} />
-            <br />
-            Customize Your Content: While the template is fixed, you can still
-            add your unique touch by customizing the content to reflect your
-            personal experiences and skills.
-          </li>
-          <li className=" why-ans col-lg-4">
-            <FontAwesomeIcon className="double" icon={faFileCircleCheck} />
-            <br />
-            Download and Apply: Once you're satisfied with your resume, download
-            it in your preferred format and start applying for jobs with
-            confidence.
-          </li>
-        </ul>
+        <div className="easy-div">
+          <div className="ease-icon">
+            <FontAwesomeIcon icon={faEdit} />
+          </div>
+          <div className="text">
+            <p>
+              Enter Your Details: Fill in your personal information, education,
+              skills, and work experience. Our intuitive interface makes it easy
+              to input and organize your data.
+            </p>
+          </div>
+        </div>
+        <div className="easy-div">
+          <div className="ease-icon">
+            <FontAwesomeIcon icon={faGears} />
+          </div>
+          <div className="text">
+            <p>
+              Customize Your Content: While the template is fixed, you can still
+              add your unique touch by customizing the content to reflect your
+              personal experiences and skills.
+            </p>
+          </div>
+        </div>
+        <div className="easy-div">
+          <div className="ease-icon">
+            <FontAwesomeIcon icon={faDownload} />
+          </div>
+          <div className="text">
+            <p>
+              Download and Apply: Once you're satisfied with your resume,
+              download it in your preferred format and start applying for jobs
+              with confidence.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div className="getStart container">
+        <h2 className="qus" style={{ fontWeight: 700 }}>
+          Get Start Today{" "}
+          <FontAwesomeIcon className="blink" icon={faWandSparkles} />
+        </h2>
+        <h4>
+          Join thousands of successful job seekers who have landed their dream
+          jobs with the help of <span>Resume Sculpture</span>. Start building
+          your resume today and take the first step towards a successful career.
+        </h4>
+        <Link to="/heading">
+          <button className="build-btn" onClick={()=>{InputTrack(true)}}>Build Your Resume</button>
+        </Link>
       </div>
     </div>
   );
