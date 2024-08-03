@@ -10,6 +10,7 @@ import {
   faFileCircleCheck,
   faGears,
   faGraduationCap,
+  faHammer,
   faWandSparkles,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
@@ -84,7 +85,7 @@ const home = ({InputTrack}) => {
       </div>
       <div className="fixed-temp container">
         <h2 className="qus" style={{ fontWeight: 700 }}>
-          FIXED TEMPLATE
+          FIXED TEMPLATE <FontAwesomeIcon className="hammer" icon={faHammer}/>
         </h2>
         <p>
           We offer a fixed, professionally designed resume template that has

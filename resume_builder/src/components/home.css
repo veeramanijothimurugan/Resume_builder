@@ -44,7 +44,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 8%;
+    margin-top: 5%;
 }
 
 .ats{
@@ -60,7 +60,7 @@
 
 .welcome{
     width: 70%;
-    margin-top: 5%;
+    margin-top: 3%;
     text-align: center;
     color: #454A84;
 }
@@ -108,13 +108,25 @@
     margin-top: 5%;
     text-align: center;
     width: 60%;
+    transition: 1s;
+}
 
+.fixed-temp:hover{
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: 50%;
+    color: green;
 }
 
 .fixed-temp p{
     padding: 10px;
     font-weight: 400;
+    transition: .5s;
 }
+
+.fixed-temp p:hover{
+    font-weight: 500;
+}
+
 
 .use{
     margin-top: 3%;
@@ -201,9 +213,25 @@
     font-weight: 500;
     border-radius: 5px;
     transition: .5s;
+    margin: 20px;
 }
 
 .build-btn:hover{
     background-color: #3482d6;
     padding: 15px 50px;
+    border-radius: 50px;
+}
+
+.hammer{
+    transition: .5s;
+    font-size: 30px;
+}
+
+.hammer:hover{
+    transform: rotate(60deg);
+    color: black;
+}
+
+.getStart h4{
+    margin-top: 30px;
 }
