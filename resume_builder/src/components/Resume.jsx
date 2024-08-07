@@ -1,13 +1,17 @@
-import { React, useContext } from "react";
+import { React, useContext, useRef } from "react";
 import "../components/resume.css";
 import {
   certifyContex,
   eduContex,
+  extraContex,
   headerContext,
   objectiveContext,
   projectContex,
   skillContex,
 } from "../App";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDownload } from "@fortawesome/free-solid-svg-icons";
+import { useReactToPrint } from 'react-to-print';
 
 const resume = () => {
   const { headerDetails } = useContext(headerContext);
@@ -15,7 +19,15 @@ const resume = () => {
   const { bachelorsData, hsc, sslc, diploma } = useContext(eduContex);
   const { skills } = useContext(skillContex);
   const { projects } = useContext(projectContex);
-  const {certificates,setCertificates} = useContext(certifyContex);
+  const { certificates } = useContext(certifyContex);
+  const { activites } = useContext(extraContex);
+
+  const resumeRef = useRef();
+
+  const handleDownload = useReactToPrint({
+    content: ()=> resumeRef.current,
+  });
+
   return (
     <>
       <div className="resume-container container-fluid">
@@ -24,19 +36,19 @@ const resume = () => {
           <div className="heading">
             <h3 className="thalaipu">Resume Preview</h3>
           </div>
-          <div className="resume">
+          <div className="resume" ref={resumeRef}>
             <div className="header">
               <h4>
                 {headerDetails.firstName} {headerDetails.lastName}
               </h4>
               <h5>{headerDetails.jobTitle}</h5>
-              <h5>
+              <h6>
                 {headerDetails.phone} |{" "}
                 <a className="mail" href="">
                   {headerDetails.email}
                 </a>{" "}
                 | {headerDetails.city}
-              </h5>
+              </h6>
               <h5>
                 <a className="mail" href={headerDetails.github}>
                   GitHub
@@ -81,7 +93,7 @@ const resume = () => {
               <hr className="line" />
               <div className="skills">
                 {skills.map((skill) => (
-                  <p className="para"> {skill} |</p>
+                 <p className="para"> {skill} | </p>
                 ))}
               </div>
             </div>
@@ -109,9 +121,7 @@ const resume = () => {
               <h5>CERTICATIONS</h5>
               <hr className="line" />
               <ul className="probj">
-                <h2>{certificates.length}</h2>
-                
-                {certificates.map((certificate) => {
+                {certificates.map((certificate) => (
                   <li>
                     <p className="para">
                       {certificate.name} – {certificate.provider}
@@ -119,29 +129,23 @@ const resume = () => {
                     <a className="right" href={certificate.credential}>
                       View Credentials
                     </a>
-                  </li>;
-                })}
+                  </li>
+                ))}
               </ul>
             </div>
             <div className="extracurricular education">
               <h5>EXTRACURRICULAR ACTIVITIES</h5>
               <hr className="line" />
               <ul className="probj">
-                <li>
-                  <p className="para">
-                    Engaged in Inter-Department kabaddi and TCE Marathon ’22 -
-                    ’23.
-                  </p>
-                </li>
-                <li>
-                  <p className="para">
-                    Participated in Tamil Speech and Photography events by IT
-                    associations in ’22 – ’23.
-                  </p>
-                </li>
+                {activites.map((activity) => (
+                  <li>
+                    <p className="para">{activity}</p>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
+          <button className="btn btn-primary download" onClick={()=>{console.log("button clicked"); handleDownload();}}>Download Resume <FontAwesomeIcon icon={faDownload}/></button>
         </div>
       </div>
     </>

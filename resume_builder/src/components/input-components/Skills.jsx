@@ -83,7 +83,7 @@ const Skills = () => {
                   ))}
                 </ul>
               </div>
-              <Link to="/resume">
+              <Link to="/projects">
                 <button className="btn next-btn" onClick={()=>{markAsSubmited('skills'); trackLength(208);completeness(57.12)} }>Next <FontAwesomeIcon icon={faArrowAltCircleRight}/></button>
               </Link>
             </>

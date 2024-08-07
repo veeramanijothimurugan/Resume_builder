@@ -7,12 +7,12 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import "./css/excurr.css"
-import { navigationContext } from "../../App";
+import { extraContex, navigationContext } from "../../App";
 
 const excurr = () => {
   const {markAsSubmited,completeness} = useContext(navigationContext);
+  const {activites, setActivities} = useContext(extraContex);
   const [activity, setActivity] = useState("");
-  const [activites, setActivities] = useState([]);
   const [finalize,setFinalize] = useState(false);
 
   const handleActivity = (e) => {

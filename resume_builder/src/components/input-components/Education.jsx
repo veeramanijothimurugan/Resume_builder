@@ -196,7 +196,7 @@ const Education = () => {
               </select>
             </div>
           </div>
-          <Link to="/resume">
+          <Link to="/skills">
             <button className='btn next-btn' onClick={()=>{markAsSubmited('education'); trackLength(156); completeness(42.84)}}>Next <FontAwesomeIcon icon={faArrowAltCircleRight}/></button>
           </Link>
         </div>

@@ -57,7 +57,7 @@ const Projects = () => {
             <ProjectDetail key={index} index={index}/>
           ))}
           {
-            component.length > 0 && <Link to="/resume">
+            component.length > 0 && <Link to="/certifications">
             <button className="btn next-btn" onClick={()=>{markAsSubmited('projects');trackLength(260);completeness(71.4)}}>Next <FontAwesomeIcon icon={faArrowAltCircleRight}/></button>
           </Link>
           }

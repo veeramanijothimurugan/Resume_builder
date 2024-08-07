@@ -54,7 +54,7 @@ const Certifications = () => {
           {component.map((_,index)=>(
             <CertificateDetails index={index} key={index}/>
           ))}
-          {component.length>0 && <Link to="/resume"><button className='btn next-btn' onClick={()=>{markAsSubmited('certificate');trackLength(310); completeness(85.68)}}>Next <FontAwesomeIcon icon={faArrowAltCircleRight}/></button></Link>}
+          {component.length>0 && <Link to="/extracurricular"><button className='btn next-btn' onClick={()=>{markAsSubmited('certificate');trackLength(310); completeness(85.68)}}>Next <FontAwesomeIcon icon={faArrowAltCircleRight}/></button></Link>}
         </div>
       </div>
     </>
