@@ -25,7 +25,7 @@ const home = ({InputTrack}) => {
             RESUME SCULPTURE
           </span>
         </h1>
-        <h3 style={{ color: "#454A84" }}>
+        <h3 style={{ color: "#214974" }}>
           The Ultimate Online Resume Builder for Freshers! Create Your Resume
           with Confidence
         </h3>

@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./css/project details.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus,faCheck} from "@fortawesome/free-solid-svg-icons";
+import { projectContex } from "../../App";
 
 const ProjectDetail = ({index}) => {
+    const {projects,setProjects} = useContext(projectContex);
     const [added,setAdded] = useState(false);
     const [inputProject, SetInputProject] = useState({
 
@@ -13,8 +15,6 @@ const ProjectDetail = ({index}) => {
     link: "",
     objective: "",
   });
-
-  const [projects,setProjects]=useState([]);
 
   const handleData = (e) =>{
     const {name,value}=e.target;

@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus,faCheck, faArrowAltCircleRight} from "@fortawesome/free-solid-svg-icons";
 import CertificateDetails from './CertificateDetails';
 import { Link } from 'react-router-dom';
+import { navigationContext } from '../../App';
 
-const Certifications = ({markAsSubmited,trackLength, completeness}) => {
+const Certifications = () => {
+  const {markAsSubmited,trackLength,completeness} = useContext(navigationContext);
   const [num,setNum]=useState(0);
   const [component,setComponent] = useState([]);
 
@@ -52,7 +54,7 @@ const Certifications = ({markAsSubmited,trackLength, completeness}) => {
           {component.map((_,index)=>(
             <CertificateDetails index={index} key={index}/>
           ))}
-          {component.length>0 && <Link to="/extracurricular"><button className='btn next-btn' onClick={()=>{markAsSubmited('certificate');trackLength(310); completeness(85.68)}}>Next <FontAwesomeIcon icon={faArrowAltCircleRight}/></button></Link>}
+          {component.length>0 && <Link to="/resume"><button className='btn next-btn' onClick={()=>{markAsSubmited('certificate');trackLength(310); completeness(85.68)}}>Next <FontAwesomeIcon icon={faArrowAltCircleRight}/></button></Link>}
         </div>
       </div>
     </>

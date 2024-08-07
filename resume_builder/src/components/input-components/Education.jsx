@@ -1,10 +1,54 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import "./css/education.css";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus,faCheck, faArrowAltCircleRight} from "@fortawesome/free-solid-svg-icons";
+import { eduContex, navigationContext } from '../../App';
 
-const Education = ({markAsSubmited,trackLength,completeness}) => {
+const Education = () => {
+  const {markAsSubmited,trackLength,completeness} = useContext(navigationContext);
+  const {bachelorsData,setbachelorsData,hsc,SetHsc,sslc,SetSslc,diploma,setDiploma} = useContext(eduContex);
+
+  const handleBachelorData = (event) => {
+    const { name, value } = event.target;
+    setbachelorsData((prevDetails) => ({
+      ...prevDetails,
+      [name]: value,
+    }));
+    console.log("Methode invoked!!");
+  };
+
+  const handleHscData = (event) => {
+    const { name, value } = event.target;
+    SetHsc((prevDetails) => ({
+      ...prevDetails,
+      [name]: value,
+    }));
+    console.log("Methode invoked!!");
+  };
+
+  const handleSslcData = (event) => {
+    const { name, value } = event.target;
+    SetSslc((prevDetails) => ({
+      ...prevDetails,
+      [name]: value,
+    }));
+    console.log("Methode invoked!!");
+  };
+
+  const handleDiplomaData = (event) => {
+    const { name, value } = event.target;
+    setDiploma((prevDetails) => ({
+      ...prevDetails,
+      [name]: value,
+    }));
+    console.log("Methode invoked!!");
+  };
+
+  const handleSubmit = () => {
+    console.log("buttonClicked");
+  };
+
   return (
     <div>
       <div className="objective-container">
@@ -22,7 +66,7 @@ const Education = ({markAsSubmited,trackLength,completeness}) => {
           <div className="row">
             <div className="col-lg-4 col-md-4">
               <p className="lable">College Names <span className="alart">*</span></p>
-              <input
+              <input name='college' onChange={handleBachelorData} value={bachelorsData.college}
                 placeholder="e.g. Thiagarajar College of Engineering"
                 type="text"
               />
@@ -35,15 +79,15 @@ const Education = ({markAsSubmited,trackLength,completeness}) => {
             </div>
             <div className="col-lg-4 col-md-4">
               <p className="lable">Field of Study <span className="alart">*</span></p>
-              <input placeholder="e.g. Information Technology" type="text" />
+              <input name='field' onChange={handleBachelorData} value={bachelorsData.field} placeholder="e.g. Information Technology" type="text" />
             </div>
             <div className="col-lg-6 col-md-6">
               <p className="lable">City <span className="alart">*</span></p>
-              <input placeholder="e.g. Madurai" type="text" />
+              <input name='city' onChange={handleBachelorData} value={bachelorsData.city} placeholder="e.g. Madurai" type="text" />
             </div>
             <div className="col-lg-6 col-md-6">
               <p className="lable">GCPA <span className="alart">*</span></p>
-              <input placeholder="e.g. 7.95" type="text" />
+              <input name='cgpa' onChange={handleBachelorData} value={bachelorsData.cgpa} placeholder="e.g. 7.95" type="text" />
             </div>
             <div className="col-lg-6 col-md-6">
               <p className="lable">From <span className="alart">*</span></p>
@@ -62,18 +106,18 @@ const Education = ({markAsSubmited,trackLength,completeness}) => {
           <div className="row">
             <div className="col-lg-4  col-md-4">
               <p className="lable">School Name</p>
-              <input
+              <input name='school' onChange={handleHscData} value={hsc.school}
                 placeholder="e.g. Devangar Higher Secondary School"
                 type="text"
               />
             </div>
             <div className="col-lg-4 col-md-4">
               <p className="lable">Percentage</p>
-              <input placeholder="e.g. 80" type="text" />
+              <input name='precentage' onChange={handleHscData} value={hsc.precentage} placeholder="e.g. 80" type="text" />
             </div>
             <div className="col-lg-4 col-md-4">
               <p className="lable">City</p>
-              <input placeholder="e.g. Aruppukottai" type="text" />
+              <input name='city' onChange={handleHscData} value={hsc.city} placeholder="e.g. Aruppukottai" type="text" />
             </div>
             <div className="col-lg-6 col-md-6">
               <p className="lable">From</p>
@@ -92,18 +136,18 @@ const Education = ({markAsSubmited,trackLength,completeness}) => {
           <div className="row">
             <div className="col-lg-4 col-md-4">
               <p className="lable">School Name<span className="alart">*</span></p>
-              <input
+              <input name='school' onChange={handleSslcData} value={sslc.school}
                 placeholder="e.g. Devangar Higher Secondary School"
                 type="text"
               />
             </div>
             <div className="col-lg-4 col-md-4">
               <p className="lable">Percentage<span className="alart">*</span></p>
-              <input placeholder="e.g. 81" type="text" />
+              <input name='precentage' onChange={handleSslcData} value={sslc.precentage} placeholder="e.g. 81" type="text" />
             </div>
             <div className="col-lg-4 col-md-4">
               <p className="lable">City<span className="alart">*</span></p>
-              <input placeholder="e.g. Aruppukottai" type="text" />
+              <input name='city' onChange={handleSslcData} value={sslc.city} placeholder="e.g. Aruppukottai" type="text" />
             </div>
             <div className="col-lg-6 col-md-6">
               <p className="lable">From<span className="alart">*</span></p>
@@ -120,28 +164,24 @@ const Education = ({markAsSubmited,trackLength,completeness}) => {
           </div>
           <h4 className="heading">Diploma (Optional)</h4>
           <div className="row">
-            <div className="col-lg-4  col-md-4">
-              <p className="lable">School Name</p>
-              <input
+            <div className="col-lg-6  col-md-6">
+              <p className="lable">College Name</p>
+              <input name='college' onChange={handleDiplomaData} value={diploma.college}
                 placeholder="e.g. XXX Diploma College"
                 type="text"
               />
             </div>
-            <div className="col-lg-4  col-md-4">
-              <p className="lable">Degree</p>
-              <input placeholder="e.g. Information Technology" type="text" />
-            </div>
-            <div className="col-lg-4  col-md-4">
+            <div className="col-lg-6  col-md-6">
               <p className="lable">Field of Study</p>
-              <input placeholder="e.g. Information Technology" type="text" />
+              <input name='field' onChange={handleDiplomaData} value={diploma.field} placeholder="e.g. Information Technology" type="text" />
             </div>
             <div className="col-lg-6 col-md-4">
               <p className="lable">Percentage</p>
-              <input placeholder="e.g. 79" type="text" />
+              <input name='precentage' onChange={handleDiplomaData} value={diploma.precentage} placeholder="e.g. 79" type="text" />
             </div>
             <div className="col-lg-6 col-md-4">
               <p className="lable">City</p>
-              <input placeholder="e.g. YYY" type="text" />
+              <input name='city' onChange={handleDiplomaData} value={diploma.city} placeholder="e.g. YYY" type="text" />
             </div>
             <div className="col-lg-6 col-md-6">
               <p className="lable">From</p>
@@ -156,7 +196,7 @@ const Education = ({markAsSubmited,trackLength,completeness}) => {
               </select>
             </div>
           </div>
-          <Link to="/skills">
+          <Link to="/resume">
             <button className='btn next-btn' onClick={()=>{markAsSubmited('education'); trackLength(156); completeness(42.84)}}>Next <FontAwesomeIcon icon={faArrowAltCircleRight}/></button>
           </Link>
         </div>

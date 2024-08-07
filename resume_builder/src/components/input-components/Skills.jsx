@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./css/skills.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleRight, faPlus, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { navigationContext, skillContex } from "../../App";
 
-const Skills = ({markAsSubmited,trackLength,completeness}) => {
+const Skills = () => {
+  const {markAsSubmited,trackLength,completeness} = useContext(navigationContext);
+  const {skills,setSkills} = useContext(skillContex);
   const [input, setInput] = useState("");
-  const [skills, setSkills] = useState([]);
 
   const settingSkill = (event) => {
     const skill = event.target.value;
@@ -81,7 +83,7 @@ const Skills = ({markAsSubmited,trackLength,completeness}) => {
                   ))}
                 </ul>
               </div>
-              <Link to="/projects">
+              <Link to="/resume">
                 <button className="btn next-btn" onClick={()=>{markAsSubmited('skills'); trackLength(208);completeness(57.12)} }>Next <FontAwesomeIcon icon={faArrowAltCircleRight}/></button>
               </Link>
             </>

@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./css/project.css";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleRight, faPlus} from "@fortawesome/free-solid-svg-icons";
 import ProjectDetail from "./ProjectDetail";
+import { navigationContext } from "../../App";
 
-const Projects = ({markAsSubmited,trackLength,completeness}) => {
+const Projects = () => {
+  const {markAsSubmited,trackLength,completeness} = useContext(navigationContext);
   const [num, setNum] = useState(0);
   const [component,setComponent] = useState([]);
 
@@ -55,7 +57,7 @@ const Projects = ({markAsSubmited,trackLength,completeness}) => {
             <ProjectDetail key={index} index={index}/>
           ))}
           {
-            component.length > 0 && <Link to="/certifications">
+            component.length > 0 && <Link to="/resume">
             <button className="btn next-btn" onClick={()=>{markAsSubmited('projects');trackLength(260);completeness(71.4)}}>Next <FontAwesomeIcon icon={faArrowAltCircleRight}/></button>
           </Link>
           }

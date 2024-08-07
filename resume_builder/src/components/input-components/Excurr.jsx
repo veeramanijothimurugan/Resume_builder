@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useContext, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPlus,
@@ -7,8 +7,10 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import "./css/excurr.css"
+import { navigationContext } from "../../App";
 
-const excurr = ({markAsSubmited,completeness}) => {
+const excurr = () => {
+  const {markAsSubmited,completeness} = useContext(navigationContext);
   const [activity, setActivity] = useState("");
   const [activites, setActivities] = useState([]);
   const [finalize,setFinalize] = useState(false);

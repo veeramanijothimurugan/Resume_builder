@@ -1,10 +1,12 @@
-import { React, useState } from "react";
+import { React, useContext, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faCheck } from "@fortawesome/free-solid-svg-icons";
+import { certifyContex } from "../../App";
 
 const CertificateDetails = ({ index }) => {
+  const {certificates,setCertificates} = useContext(certifyContex);
+
   const [added, setAdded] = useState(false);
-  const [certificates, setCertificates] = useState([]);
   const [certificate, setCertificate] = useState({
     name: '',
     provider: '',
@@ -14,7 +16,6 @@ const CertificateDetails = ({ index }) => {
   const handleInput = (e) =>{
     const {name,value} = e.target
     setCertificate({...certificate,[name]:value});
-    console.log(certificate);
   }
 
   const handleCertify = (e) => {

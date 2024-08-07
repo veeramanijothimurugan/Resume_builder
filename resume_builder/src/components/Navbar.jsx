@@ -17,7 +17,7 @@ const Navbar = ({InputTrack}) => {
             </a>
           </div>
           <ul className="nav navbar-nav navbar-right">
-            <li className="active"><a className="navbar-link" href="">Home</a></li>
+            <li className="active"><a className="navbar-link" href="/">Home</a></li>
             <li><a className="navbar-link" href="">About</a></li>
             <li><a className="navbar-link" href="">Contact</a></li>
               
