@@ -5,14 +5,49 @@
     padding: 20px;
     width: 100%;
     position: absolute;
+    
 }
 
 @media (max-width: 768px) {
     .home-container{
-        margin-top: 35%;
-        position: relative;
+        margin-top:35%;
+    }
+    .resume-img{
+        height: 10% !important;
+    }
+    .ats{
+        left: 35% !important;
+        font-size: 25px;
+    }
+    .welcome,.why,.fixed-temp,.easy-container,.getStart{
+        width: 100% !important;
     }
 }
+
+@media (max-width: 576px){
+    .home-container{
+        margin-top:60%;
+    }
+    .resume-img{
+        left: 32% !important;
+        height: 8% !important;
+        width: 40% !important;
+    }
+    .ats{
+        left: 35% !important;
+        margin-top: 3%;
+        font-size: 15px;
+    }
+
+    .bg{
+        width: 90% !important;
+    }
+
+    .welcome,.why,.fixed-temp,.easy-container,.getStart{
+        width: 80% !important;
+    }
+}
+
 
 .intro{
     display: flex;
@@ -55,11 +90,11 @@
     border: 5px solid;
     padding: 10px 20px;
     text-align: center;
-    background-color: a;
+    width: fit-content;
 }
 
 .welcome{
-    width: 70%;
+    width: 100%;
     margin-top: 3%;
     text-align: center;
     color: #454A84;
@@ -68,7 +103,7 @@
 .why{
     margin-top:  5%;
     text-align: center;
-    width: 80%;
+    width: 100%;
     padding: 20px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
@@ -107,7 +142,7 @@
 .fixed-temp{
     margin-top: 5%;
     text-align: center;
-    width: 60%;
+    width: 100%;
     transition: 1s;
 }
 
@@ -146,6 +181,7 @@
     text-align: center;
     padding: 20px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
 }
 
 .easy-div{
@@ -171,7 +207,7 @@
 
 .getStart{
     margin-top: 3%;
-    width: 50%;
+    width: 100%;
     text-align: center;
     transition: 1s;
 }

@@ -87,3 +87,13 @@
     margin-top: 20px;
     padding: 10px 20px;
 }
+
+@media print {
+    .link {
+      text-decoration: none !important;
+      color: rgb(0, 123, 255) !important;
+    }
+    .resume a[href]::after {
+      content: '';
+    }
+  }

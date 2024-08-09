@@ -139,7 +139,7 @@ const Heading = () => {
                   onChange={handledetails}
                 />
               </div>
-              <Link to={"/objective"}>
+              <Link to={"/resume"}>
                 <button
                   className="btn next-btn"
                   type="submit"

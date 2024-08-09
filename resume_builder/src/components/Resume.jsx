@@ -44,17 +44,17 @@ const resume = () => {
               <h5>{headerDetails.jobTitle}</h5>
               <h6>
                 {headerDetails.phone} |{" "}
-                <a className="mail" href="">
+                <a className="mail link" href="">
                   {headerDetails.email}
                 </a>{" "}
                 | {headerDetails.city}
               </h6>
               <h5>
-                <a className="mail" href={headerDetails.github}>
+                <a className="mail link" href={headerDetails.github}>
                   GitHub
                 </a>{" "}
                 |{" "}
-                <a className="mail" href={headerDetails.linkedIn}>
+                <a className="mail link" href={headerDetails.linkedIn}>
                   LinedIn
                 </a>
               </h5>

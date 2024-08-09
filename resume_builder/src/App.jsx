@@ -154,7 +154,7 @@ function App() {
                           />
                         )}
                         <Routes>
-                          <Route path="/" element={<Home />}></Route>
+                          <Route path="/" element={<Home InputTrack={InputTrack} />}></Route>
                           <Route path="/resume" element={<Resume />}></Route>
                           <Route
                             path="/education"
