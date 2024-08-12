@@ -43,3 +43,63 @@ img{
 .build{
     display: none;
 }
+
+
+
+@media (min-width: 768px) {
+    .navbar-toggler {
+      display: none; /* Hide the toggle button on larger screens */
+    }
+  
+    .navbar-nav {
+      display: flex; /* Show the navbar items on larger screens */
+      max-height: none; /* No max-height restriction */
+    }
+  }
+  
+  /* Media query for screen sizes below 768px */
+  @media (max-width: 768px) {
+    .navbar-nav {
+      display: none; /* Hide the navbar items by default */
+      flex-direction: column;
+      background-color: #333;
+      max-height: 0; /* Default to hidden */
+    }
+  
+    .navbar-nav.show {
+      display: flex; /* Show navbar items when toggled */
+      max-height: 300px; /* Expand to show items */
+    }
+  
+    .navbar-toggler {
+      display: none; /* Hide the toggle button by default on medium screens */
+    }
+  }
+  
+  /* Media query for screen sizes below 450px */
+  @media (max-width: 450px) {
+    .navbar-toggler {
+      display: block; /* Show the toggle button on very small screens */
+      background-color: transparent;
+      border: none;
+      color: white;
+      padding: 10px;
+      cursor: pointer;
+      font-size: 20px;
+      float: right;
+      margin-top: -12%;
+    }
+  }
+
+  .show{
+    margin-bottom: 0%;
+    transition: .5s;
+  }
+
+  .content {
+    transition: margin-top 0.3s ease; /* Smooth transition */
+  }
+
+  .navbar{
+    width: 100%;
+  }

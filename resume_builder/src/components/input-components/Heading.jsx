@@ -26,7 +26,7 @@ const Heading = () => {
       <div className=" contact-container container">
         <div className="col-lg-3 col-md-3 col-sm-3"></div>
         <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-          <h2 className="title">
+          <h2 className="header-title">
             What's your preferred method of contact for employers?
           </h2>
           <h4 className="answer">
@@ -139,7 +139,7 @@ const Heading = () => {
                   onChange={handledetails}
                 />
               </div>
-              <Link to={"/resume"}>
+              <Link to={"/objective"}>
                 <button
                   className="btn next-btn"
                   type="submit"

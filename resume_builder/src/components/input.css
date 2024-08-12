@@ -2,15 +2,15 @@
     background-color: #003464;
     color: hsl(0, 0%, 100%);
     padding: 50px;
-    padding-top: 7.5%;
+    padding-top: 8.5%;
     overflow: auto;
     position: fixed;
 }
 
 @media (max-width: 768px) {
     .traking{
-        margin-top: 230px;
         position: relative;
+        padding-top: 15%;
     }
 }
 
@@ -27,7 +27,7 @@
 }
 
 .input-container{
-    margin-top: 0px;
+    margin-top: 40px;
 }
 
 .progress-bar{

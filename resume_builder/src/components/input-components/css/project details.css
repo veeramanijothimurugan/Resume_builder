@@ -4,6 +4,7 @@
 
 .details-container{
     margin-top: 20px;
+    width: 100% !important;
 }
 
 .proAdd{
@@ -23,4 +24,8 @@
     background-color: green;
     padding: 5px 10px;
     border-radius: 50px;
+}
+
+.details{
+    width: 100%;
 }

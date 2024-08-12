@@ -19,7 +19,7 @@ const home = ({InputTrack}) => {
   return (
     <div className="home-container container">
       <div className="intro">
-        <h1 style={{ fontWeight: 800 }}>
+        <h1 style={{ fontWeight: 800, textAlign: "center" }}>
           WELCOME TO{" "}
           <span style={{ fontWeight: 800 }} className="alart">
             RESUME SCULPTURE

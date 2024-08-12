@@ -25,7 +25,7 @@ const Certifications = () => {
     <>
       <div className="project-container container-fluid">
         <div className="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
-        <div className="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div className="details col-lg-6 col-md-6 col-sm-6 col-xs-6">
           <div className="wordings">
             <h2 className="qus">
             What is the significance of<span className="Highlight"> CERTIFICATIONS</span>{" "}

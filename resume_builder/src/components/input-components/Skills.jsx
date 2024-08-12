@@ -50,12 +50,12 @@ const Skills = () => {
             <p className="lable">Enter your skills here <span className="alart">*</span></p>
             <input
               placeholder="e.g. React Js"
-              className="col-lg-10 col-md-10 col-sm-10 col-xs-10 skill-input"
+              className="col-lg-10 col-md-10 col-sm-10 col-xs-9 skill-input"
               onChange={settingSkill}
               type="text"
             />
             <button
-              className="add-btn col-lg-2 col-md-2 col-sm-2 col-xs-2 add"
+              className="add-btn col-lg-2 col-md-2 col-sm-2 col-xs-3 add"
               type="submit"
             >
               ADD <FontAwesomeIcon icon={faPlus} />

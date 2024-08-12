@@ -40,7 +40,7 @@ const CertificateDetails = ({ index }) => {
             )}
           </h4>
           <div className="row">
-            <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div className="details col-lg-6 col-md-6 col-sm-6 col-xs-12">
               <p className="lable">Name</p>
               <input onChange={handleInput}
                 name="name" value={certificate.name}
