@@ -7,17 +7,21 @@ import {
   faBusinessTime,
   faDownload,
   faEdit,
+  faEnvelope,
   faFileCircleCheck,
   faGears,
   faGraduationCap,
   faHammer,
+  faPhone,
   faWandSparkles,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import { faLocationDot } from "@fortawesome/free-solid-svg-icons/faLocationDot";
+import { faGithub, faLinkedin, faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
 
-const home = ({InputTrack}) => {
+const home = ({ InputTrack }) => {
   return (
-    <div className="home-container container">
+    <div name="home" className="home-container container">
       <div className="intro">
         <h1 style={{ fontWeight: 800, textAlign: "center" }}>
           WELCOME TO{" "}
@@ -51,7 +55,7 @@ const home = ({InputTrack}) => {
           out and increases your chances of getting hired.
         </p>
       </div>
-      <div className="why container">
+      <div name="about" className="why container">
         <h2 className="qus" style={{ fontWeight: 700 }}>
           WHY CHOOSE RESUME SCULPTURE?
         </h2>
@@ -65,7 +69,7 @@ const home = ({InputTrack}) => {
             strengths and potential.
           </li>
 
-          <li className=" why-ans col-lg-3">
+          <li className=" why-ans col-lg-4">
             <FontAwesomeIcon className="double" icon={faBusinessTime} />
             <br />
             Higher Chances of Getting Hired: A well-crafted resume is your
@@ -85,7 +89,7 @@ const home = ({InputTrack}) => {
       </div>
       <div className="fixed-temp container">
         <h2 className="qus" style={{ fontWeight: 700 }}>
-          FIXED TEMPLATE <FontAwesomeIcon className="hammer" icon={faHammer}/>
+          FIXED TEMPLATE <FontAwesomeIcon className="hammer" icon={faHammer} />
         </h2>
         <p>
           We offer a fixed, professionally designed resume template that has
@@ -147,8 +151,60 @@ const home = ({InputTrack}) => {
           your resume today and take the first step towards a successful career.
         </h4>
         <Link to="/heading">
-          <button className="build-btn" onClick={()=>{InputTrack(true)}}>Build Your Resume</button>
+          <button
+            className="build-btn"
+            onClick={() => {
+              InputTrack(true);
+            }}
+          >
+            Build Your Resume
+          </button>
         </Link>
+      </div>
+      <div className="contact container">
+        <div className="contact-left col-lg-4">
+          <h3>Contact Information</h3>
+          <div className="align">
+            <p className="con">
+              <span className="icon">
+                <FontAwesomeIcon icon={faPhone} />
+              </span>
+              +91 8072640512
+            </p>
+            <p className="con">
+              <span className="icon">
+                <FontAwesomeIcon icon={faEnvelope} />
+              </span>
+              veeramanijothimurugan@gmail.com
+            </p>
+            <p className="con">
+              <span className="icon">
+                <FontAwesomeIcon icon={faLocationDot} />
+              </span>
+              A1(2) Aruppukottai, 626101
+            </p>
+            <div className="social-icon">
+              <div  className="col-lg-2"><a className="social-icon" href="linkedin.com/in/veeramanijothimurugan/"><FontAwesomeIcon icon={faLinkedinIn}/></a></div>
+              <div  className="col-lg-2"><a className="social-icon" href="https://github.com/veeramanijothimurugan"><FontAwesomeIcon icon={faGithub}/></a></div>
+          </div>
+          </div>
+        </div>
+        <div name="contact" className="contact-right col-lg-8">
+          <div className="col-lg-6">
+            <p>First Name</p>
+            <input placeholder="e.g., Veeramani" type="text" name="" id="" />
+          </div>
+          <div className="col-lg-6">
+            <p>Last Name</p>
+            <input placeholder="e.g., jothimurugan" type="text" name="" id="" />
+          </div>
+          <div className="col-lg-12">
+            <textarea placeholder="Write a messge.." className="contact-msg" name="" id=""></textarea>
+          </div>
+          <div>
+            <button className="send btn">Send Message</button>
+          </div>
+        </div>
       </div>
     </div>
   );

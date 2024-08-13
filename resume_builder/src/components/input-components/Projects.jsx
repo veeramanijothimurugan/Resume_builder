@@ -28,10 +28,10 @@ const Projects = () => {
 
   return (
     <>
-      <div className="project-container container-fluid">
+      <div className="objective-container container-fluid">
         <div className="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
-        <div className="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-          <div className="details">
+        <div className="detail col-lg-6 col-md-6 col-sm-6 col-xs-6">
+          <div className="objective-container">
             <div className="wordings">
               <h2 className="qus">
                 How can personal <span className="Highlight">PROJECT</span>{" "}
@@ -49,12 +49,12 @@ const Projects = () => {
                 </p>
                 <input
                   placeholder="e.g. 2"
-                  className="col-lg-10 col-md-10 col-sm-9 col-xs-8 skill-input"
+                  className="col-lg-10 col-md-10 col-sm-9 col-xs-9 skill-input"
                   type="number"
                   onChange={handleNum}
                 />
                 <button
-                  className="add-btn col-lg-2 col-md-2 col-sm-3 col-xs-4 add"
+                  className="add-btn col-lg-2 col-md-2 col-sm-3 col-xs-3 add"
                   type="submit"
                 >
                   ADD <FontAwesomeIcon icon={faPlus} />

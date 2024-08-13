@@ -2,7 +2,7 @@ import React,{useContext} from 'react'
 import "./css/education.css";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus,faCheck, faArrowAltCircleRight} from "@fortawesome/free-solid-svg-icons";
+import { faArrowAltCircleRight} from "@fortawesome/free-solid-svg-icons";
 import { eduContex, navigationContext } from '../../App';
 
 const Education = () => {
@@ -49,6 +49,15 @@ const Education = () => {
     console.log("buttonClicked");
   };
 
+  const years = [];
+  const generateYear = () => {
+    const currentYear = new Date().getFullYear();
+    for (let year = currentYear - 5; year <= currentYear + 5; year++) {
+      years.push(year);
+    }
+  };
+  generateYear();
+
   return (
     <div>
       <div className="objective-container">
@@ -91,14 +100,20 @@ const Education = () => {
             </div>
             <div className="col-lg-6 col-md-6">
               <p className="lable">From <span className="alart">*</span></p>
-              <select name="degree" id="degree">
-                <option value="B.Tech">2020</option>
+              <select name="from" value={bachelorsData.from} id='degree'>
+                <option>Select</option>
+                {years.map((year,index)=>(
+                  <option key={index} value={year}>{year}</option>
+                ))}
               </select>
             </div>
             <div className="col-lg-6 col-md-6">
               <p className="lable">To <span className="alart">*</span></p>
-              <select name="degree" id="degree">
-                <option value="B.Tech">2024</option>
+              <select name="to" value={bachelorsData.to} id='degree'>
+              <option>Select</option>
+                {years.map((year,index)=>(
+                  <option key={index} value={year}>{year}</option>
+                ))}
               </select>
             </div>
           </div>
@@ -122,13 +137,19 @@ const Education = () => {
             <div className="col-lg-6 col-md-6">
               <p className="lable">From</p>
               <select name="degree" id="degree">
-                <option value="B.Tech">2019</option>
+              <option>Select</option>
+                {years.map((year,index)=>(
+                  <option key={index} value={hsc.from} >{year}</option>
+                ))}
               </select>
             </div>
             <div className="col-lg-6 col-md-6">
               <p className="lable">To</p>
               <select name="degree" id="degree">
-                <option value="B.Tech">2020</option>
+              <option>Select</option>
+                {years.map((year,index)=>(
+                  <option key={index} value={hsc.to} >{year}</option>
+                ))}
               </select>
             </div>
           </div>
@@ -152,13 +173,19 @@ const Education = () => {
             <div className="col-lg-6 col-md-6">
               <p className="lable">From<span className="alart">*</span></p>
               <select name="degree" id="degree">
-                <option value="B.Tech">2017</option>
+              <option>Select</option>
+                {years.map((year,index)=>(
+                  <option key={index} value={sslc.from} >{year}</option>
+                ))}
               </select>
             </div>
             <div className="col-lg-6 col-md-6">
               <p className="lable">To<span className="alart">*</span></p>
               <select name="degree" id="degree">
-                <option value="B.Tech">2018</option>
+              <option>Select</option>
+                {years.map((year,index)=>(
+                  <option key={index} value={sslc.to} >{year}</option>
+                ))}
               </select>
             </div>
           </div>
@@ -186,17 +213,23 @@ const Education = () => {
             <div className="col-lg-6 col-md-6">
               <p className="lable">From</p>
               <select name="degree" id="degree">
-                <option value="B.Tech">2019</option>
+              <option>Select</option>
+                {years.map((year,index)=>(
+                  <option key={index} value={diploma.from} >{year}</option>
+                ))}
               </select>
             </div>
             <div className="col-lg-6 col-md-6">
               <p className="lable">To</p>
               <select name="degree" id="degree">
-                <option value="B.Tech">2020</option>
+              <option>Select</option>
+                {years.map((year,index)=>(
+                  <option key={index} value={diploma.to} >{year}</option>
+                ))}
               </select>
             </div>
           </div>
-          <Link to="/skills">
+          <Link to="/resume">
             <button className='btn next-btn' onClick={()=>{markAsSubmited('education'); trackLength(156); completeness(42.84)}}>Next <FontAwesomeIcon icon={faArrowAltCircleRight}/></button>
           </Link>
         </div>

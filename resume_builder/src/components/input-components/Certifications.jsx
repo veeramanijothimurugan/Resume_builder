@@ -40,11 +40,11 @@ const Certifications = () => {
               <p className="lable">Enter no.of. Certificate <span className="alart">*</span></p>
               <input onChange={handleNum}
               placeholder="e.g. 2"
-              className="col-lg-10 col-md-10 col-sm-9 col-xs-8 skill-input"
+              className="col-lg-10 col-md-10 col-sm-9 col-xs-9 skill-input"
               type="number"
             />
             <button
-              className="add-btn col-lg-2 col-md-2 col-sm-3 col-xs-4 add"
+              className="add-btn col-lg-2 col-md-2 col-sm-3 col-xs-3 add"
               type="submit"
             >
               ADD <FontAwesomeIcon icon={faPlus} />

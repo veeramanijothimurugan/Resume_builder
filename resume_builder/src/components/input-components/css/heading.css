@@ -42,6 +42,10 @@ input{
     border: 1px solid;
 }
 
+input:focus{
+    outline: none;
+}
+
 .inputfeild{
     width: 100%;
 }

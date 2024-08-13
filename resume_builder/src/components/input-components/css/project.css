@@ -10,8 +10,15 @@
     .project-container{
         position: relative;
     }
+    .detail{
+        width: 100%;
+    }
 }
 
 .project-input{
     margin-bottom: 70px !important;
+}
+
+.details {
+    width: 70%;
 }

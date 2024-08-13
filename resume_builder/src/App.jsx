@@ -98,6 +98,9 @@ function App() {
   //extracurricular data
   const [activites, setActivities] = useState([]);
 
+  //year data
+  
+
   const markAsSubmited = (page) => {
     setSubmitedPage((prev) => ({ ...prev, [page]: true }));
   };
@@ -143,45 +146,51 @@ function App() {
                   <certifyContex.Provider
                     value={{ certificates, setCertificates }}
                   >
-                    <extraContex.Provider value={{activites, setActivities}}>
-                      <Router>
-                        <Navbar InputTrack={InputTrack} />
-                        {showInput && (
-                          <Input
-                            submitedPage={submitedPage}
-                            length={length}
-                            completeLen={completeLen}
-                          />
-                        )}
-                        <Routes>
-                          <Route path="/" element={<Home InputTrack={InputTrack} />}></Route>
-                          <Route path="/resume" element={<Resume />}></Route>
-                          <Route
-                            path="/education"
-                            element={<Education />}
-                          ></Route>
-                          <Route path="/heading" element={<Heading />}></Route>
-                          <Route
-                            path="/objective"
-                            element={<Objective />}
-                          ></Route>
-                          <Route
-                            path="/projects"
-                            element={<Projects />}
-                          ></Route>
-                          <Route
-                            path="/certifications"
-                            element={<Certifications />}
-                          ></Route>
-                          <Route
-                            path="/extracurricular"
-                            element={<Extracurricular />}
-                          />
-                          <Route path="/skills" element={<Skills />}></Route>
-                          <Route element={<ProjectDetail />}></Route>
-                          <Route element={<CertificateDetails />}></Route>
-                        </Routes>
-                      </Router>
+                    <extraContex.Provider value={{ activites, setActivities }}>
+                        <Router>
+                          <Navbar InputTrack={InputTrack} />
+                          {showInput && (
+                            <Input
+                              submitedPage={submitedPage}
+                              length={length}
+                              completeLen={completeLen}
+                            />
+                          )}
+                          <Routes>
+                            <Route
+                              path="/"
+                              element={<Home InputTrack={InputTrack} />}
+                            ></Route>
+                            <Route path="/resume" element={<Resume />}></Route>
+                            <Route
+                              path="/education"
+                              element={<Education />}
+                            ></Route>
+                            <Route
+                              path="/heading"
+                              element={<Heading />}
+                            ></Route>
+                            <Route
+                              path="/objective"
+                              element={<Objective />}
+                            ></Route>
+                            <Route
+                              path="/projects"
+                              element={<Projects />}
+                            ></Route>
+                            <Route
+                              path="/certifications"
+                              element={<Certifications />}
+                            ></Route>
+                            <Route
+                              path="/extracurricular"
+                              element={<Extracurricular />}
+                            />
+                            <Route path="/skills" element={<Skills />}></Route>
+                            <Route element={<ProjectDetail />}></Route>
+                            <Route element={<CertificateDetails />}></Route>
+                          </Routes>
+                        </Router>
                     </extraContex.Provider>
                   </certifyContex.Provider>
                 </projectContex.Provider>

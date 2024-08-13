@@ -72,21 +72,21 @@ const resume = () => {
               <h6>
                 {bachelorsData.field} | CGPA: {bachelorsData.cgpa}
               </h6>
-              <h6 className="right">(2020 - 2024)</h6>
+              <h6 className="right">({bachelorsData.from} - {bachelorsData.to})</h6>
               <h6 className="next">{hsc.school}</h6>
               <h6 className="right">{hsc.city}</h6>
               <h6>12th | Percentage: {hsc.precentage}%</h6>
-              <h6 className="right">(2019 - 2020)</h6>
+              <h6 className="right">({hsc.from} - {hsc.to})</h6>
               <h6 className="next">{sslc.school}</h6>
               <h6 className="right">{sslc.city}</h6>
               <h6>10th | Percentage: {sslc.precentage}%</h6>
-              <h6 className="right">(2017 - 2018)</h6>
+              <h6 className="right">({sslc.from} - {sslc.to})</h6>
               <h6 className="next">{diploma.college}</h6>
               <h6 className="right">{diploma.city}</h6>
               <h6>
                 {diploma.field} | CGPA: {diploma.cgpa}
               </h6>
-              <h6 className="right">(2020 - 2024)</h6>
+              <h6 className="right">({sslc.from} - {sslc.to})</h6>
             </div>
             <div className="education">
               <h5>SKILLS</h5>
