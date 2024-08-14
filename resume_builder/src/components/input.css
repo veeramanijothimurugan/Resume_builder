@@ -24,6 +24,7 @@
     text-align: center;
     border-radius: 50%;
     margin-right: 10px;
+    
 }
 
 .input-container{
@@ -43,6 +44,7 @@
     margin-bottom: 30px;
     font-size: 15px;
 }
+
 
 .finish{
     width: 20px;

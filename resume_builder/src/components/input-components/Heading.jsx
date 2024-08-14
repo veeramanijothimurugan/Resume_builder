@@ -19,7 +19,9 @@ const Heading = () => {
   };
 
   const handleSubmit = () => {
-    console.log("buttonClicked");
+    if(headerDetails.firstName===""){
+      
+    }
   };
 
   return (

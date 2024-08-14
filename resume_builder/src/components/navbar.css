@@ -13,9 +13,34 @@ img{
 }
 
 .navbar-link{
-    color: #fff !important;
-    cursor: pointer;
+    position: relative;
+    padding: 10px;
+    text-decoration: none;
+    display: inline-block; 
 }
+
+.navbar-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  color: #fff;
+  bottom: -5px;
+  width: 100%;
+  height: 3px;
+  background-color: transparent;
+  transition: background-color 0.3s ease, bottom 0.3s ease;
+}
+
+.navbar-link:hover::after,.navbar-link:active{
+  background-color: #408fd3;
+  font-size: 18px;
+  bottom: 0;
+}
+
+.navbar-link:focus{
+  background-color: #337AB7;
+}
+
 
 .navbar-inverse{
     border-radius: 0px;
@@ -37,9 +62,6 @@ img{
     margin-top: -5px;
 }
 
-.nav:active{
-    background-color: transparent !important;
-}
 
 .build{
     display: none;
@@ -49,38 +71,36 @@ img{
 
 @media (min-width: 768px) {
     .navbar-toggler {
-      display: none; /* Hide the toggle button on larger screens */
+      display: none; 
     }
   
     .navbar-nav {
-      display: flex; /* Show the navbar items on larger screens */
-      max-height: none; /* No max-height restriction */
+      display: flex; 
+      max-height: none;
     }
   }
   
-  /* Media query for screen sizes below 768px */
   @media (max-width: 768px) {
     .navbar-nav {
-      display: none; /* Hide the navbar items by default */
+      display: none; 
       flex-direction: column;
       background-color: #333;
-      max-height: 0; /* Default to hidden */
+      max-height: 0;
     }
   
     .navbar-nav.show {
-      display: flex; /* Show navbar items when toggled */
-      max-height: 300px; /* Expand to show items */
+      display: flex;
+      max-height: 300px;
     }
   
     .navbar-toggler {
-      display: none; /* Hide the toggle button by default on medium screens */
+      display: none;
     }
   }
   
-  /* Media query for screen sizes below 450px */
   @media (max-width: 450px) {
     .navbar-toggler {
-      display: block; /* Show the toggle button on very small screens */
+      display: block;
       background-color: transparent;
       border: none;
       color: white;
@@ -98,10 +118,26 @@ img{
   }
 
   .content {
-    transition: margin-top 0.3s ease; /* Smooth transition */
+    transition: margin-top 0.3s ease; 
   }
 
   .navbar{
     width: 100%;
   }
-  
+
+  .hide{
+    display: none;
+  }
+
+  .links{
+    text-decoration: none !important; 
+    color: white !important;
+    font-size: 15px;
+    bottom: 15px;
+  }
+
+  .links:hover{
+    text-decoration: none;
+    color: #fff;
+  }
+

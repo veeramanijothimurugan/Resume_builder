@@ -1,11 +1,12 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import logo from "../assets/images/logo.png";
 import "../components/navbar.css";
 import { Link } from "react-router-dom";
-import {Link as ScrollLink} from "react-scroll"
+import { Link as ScrollLink } from "react-scroll";
+import { navLinkContex } from "../App";
 
 const Navbar = ({ InputTrack }) => {
-  const [buildCV, setBuildCV] = useState(false);
+  const { buildCV, setBuildCV } = useContext(navLinkContex);
   const [isNavVisible, setIsNavVisible] = useState(false);
   const [contentMargin, setContentMargin] = useState(0);
 
@@ -46,17 +47,48 @@ const Navbar = ({ InputTrack }) => {
             }`}
           >
             <li>
-              <ScrollLink to="home" spy={true} smooth={true} offset={-100} duration={500} className="navbar-link">
-                Home
+              <ScrollLink
+                onClick={() => {
+                  InputTrack(false);
+                  setBuildCV(false);
+                }}
+                to="home"
+                spy={true}
+                smooth={true}
+                offset={-100}
+                duration={500}
+                className="navbar-link"
+                activeClass="active"
+              >
+                <Link className="links" to="/">
+                  Home
+                </Link>
               </ScrollLink>
+              <div className="highlight"></div>
             </li>
-            <li>
-              <ScrollLink to="about" spy={true} smooth={true} offset={-100} duration={500} className="navbar-link">
+            <li className={buildCV ? "hide" : "show"}>
+              <ScrollLink
+                to="about"
+                spy={true}
+                smooth={true}
+                offset={-100}
+                duration={500}
+                className="navbar-link"
+                activeClass="active"
+              >
                 About
               </ScrollLink>
             </li>
-            <li>
-              <ScrollLink to="contact" spy={true} smooth={true} offset={-100} duration={500} className="navbar-link" href="">
+            <li className={buildCV ? "hide" : "show"}>
+              <ScrollLink
+                to="contact"
+                spy={true}
+                smooth={true}
+                offset={-100}
+                duration={500}
+                className="navbar-link"
+                activeClass="active"
+              >
                 Contact
               </ScrollLink>
             </li>

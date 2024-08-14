@@ -1,13 +1,10 @@
 import React from "react";
 import "./input.css";
-import Heading from "./input-components/Heading";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faPlus,
-  faCheck,
   faCheckCircle,
 } from "@fortawesome/free-solid-svg-icons";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Input = ({ submitedPage, length, completeLen }) => {
 
@@ -18,7 +15,6 @@ const Input = ({ submitedPage, length, completeLen }) => {
           <div className="row g-0">
             <div className="col-lg-3 col-md-3 col-sm-3 vh-100 traking">
               <div className="progress-bar" style={{ height: length }}></div>
-              <Link to="/heading">
               <p className="step">
                 <span className="steps">
                   {submitedPage.heading ? (
@@ -29,7 +25,6 @@ const Input = ({ submitedPage, length, completeLen }) => {
                 </span>{" "}
                 Heading
               </p>
-              </Link>
               <p className="step">
                 <span className="steps">
                   {submitedPage.objective ? (

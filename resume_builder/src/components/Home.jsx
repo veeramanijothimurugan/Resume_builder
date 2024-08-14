@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import bg from "../assets/images/bg.png";
 import resume from "../assets/images/resume.png";
 import "./home.css";
@@ -17,9 +17,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons/faLocationDot";
-import { faGithub, faLinkedin, faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
+import { faGithub, faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
+import { navLinkContex } from "../App";
 
 const home = ({ InputTrack }) => {
+  const {setBuildCV}=useContext(navLinkContex);
   return (
     <div name="home" className="home-container container">
       <div className="intro">
@@ -154,6 +156,7 @@ const home = ({ InputTrack }) => {
           <button
             className="build-btn"
             onClick={() => {
+              setBuildCV(true);
               InputTrack(true);
             }}
           >

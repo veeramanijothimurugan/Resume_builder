@@ -22,6 +22,8 @@ export const skillContex = createContext();
 export const projectContex = createContext();
 export const certifyContex = createContext();
 export const extraContex = createContext();
+export const navLinkContex = createContext();
+export const clickContex = createContext();
 
 function App() {
   //header data
@@ -98,8 +100,11 @@ function App() {
   //extracurricular data
   const [activites, setActivities] = useState([]);
 
-  //year data
-  
+  //navlink manupulation
+  const [buildCV, setBuildCV] = useState(false);
+
+  //nav highlighting
+  const [click, setClick] = useState(false);
 
   const markAsSubmited = (page) => {
     setSubmitedPage((prev) => ({ ...prev, [page]: true }));
@@ -147,50 +152,60 @@ function App() {
                     value={{ certificates, setCertificates }}
                   >
                     <extraContex.Provider value={{ activites, setActivities }}>
-                        <Router>
-                          <Navbar InputTrack={InputTrack} />
-                          {showInput && (
-                            <Input
-                              submitedPage={submitedPage}
-                              length={length}
-                              completeLen={completeLen}
-                            />
-                          )}
-                          <Routes>
-                            <Route
-                              path="/"
-                              element={<Home InputTrack={InputTrack} />}
-                            ></Route>
-                            <Route path="/resume" element={<Resume />}></Route>
-                            <Route
-                              path="/education"
-                              element={<Education />}
-                            ></Route>
-                            <Route
-                              path="/heading"
-                              element={<Heading />}
-                            ></Route>
-                            <Route
-                              path="/objective"
-                              element={<Objective />}
-                            ></Route>
-                            <Route
-                              path="/projects"
-                              element={<Projects />}
-                            ></Route>
-                            <Route
-                              path="/certifications"
-                              element={<Certifications />}
-                            ></Route>
-                            <Route
-                              path="/extracurricular"
-                              element={<Extracurricular />}
-                            />
-                            <Route path="/skills" element={<Skills />}></Route>
-                            <Route element={<ProjectDetail />}></Route>
-                            <Route element={<CertificateDetails />}></Route>
-                          </Routes>
-                        </Router>
+                      <navLinkContex.Provider value={{ buildCV, setBuildCV }}>
+                        <clickContex.Provider value={{click,setClick}}>
+                          <Router>
+                            <Navbar InputTrack={InputTrack} />
+                            {showInput && (
+                              <Input
+                                submitedPage={submitedPage}
+                                length={length}
+                                completeLen={completeLen}
+                              />
+                            )}
+                            <Routes>
+                              <Route
+                                path="/"
+                                element={<Home InputTrack={InputTrack} />}
+                              ></Route>
+                              <Route
+                                path="/resume"
+                                element={<Resume />}
+                              ></Route>
+                              <Route
+                                path="/education"
+                                element={<Education />}
+                              ></Route>
+                              <Route
+                                path="/heading"
+                                element={<Heading />}
+                              ></Route>
+                              <Route
+                                path="/objective"
+                                element={<Objective />}
+                              ></Route>
+                              <Route
+                                path="/projects"
+                                element={<Projects />}
+                              ></Route>
+                              <Route
+                                path="/certifications"
+                                element={<Certifications />}
+                              ></Route>
+                              <Route
+                                path="/extracurricular"
+                                element={<Extracurricular />}
+                              />
+                              <Route
+                                path="/skills"
+                                element={<Skills />}
+                              ></Route>
+                              <Route element={<ProjectDetail />}></Route>
+                              <Route element={<CertificateDetails />}></Route>
+                            </Routes>
+                          </Router>
+                        </clickContex.Provider>
+                      </navLinkContex.Provider>
                     </extraContex.Provider>
                   </certifyContex.Provider>
                 </projectContex.Provider>
