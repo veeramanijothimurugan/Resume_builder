@@ -1,15 +1,19 @@
 import React, { useContext, useState } from "react";
 import "./css/objective.css";
-import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowAltCircleRight } from "@fortawesome/free-solid-svg-icons";
+import { faArrowAltCircleRight, faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
 import { navigationContext, objectiveContext } from "../../App";
+import { useForm } from "react-hook-form";
+import { useNavigate } from 'react-router-dom';
 
 const objective = ({}) => {
+  const {register, handleSubmit, formState: {errors,isValid}} = useForm();
+  console.log(errors)
+
   const { markAsSubmited, trackLength, completeness } =
     useContext(navigationContext);
   const { objective,setObjective } = useContext(objectiveContext);
-
+  const navigation = useNavigate();
 
   return (
     <>
@@ -29,31 +33,34 @@ const objective = ({}) => {
               </h4>
             </div>
             <p className="alart">* indicates a require field</p>
-            <form>
+            <form onSubmit={handleSubmit((data)=>{
+              if(isValid){
+                markAsSubmited("objective");
+                  trackLength(104);
+                  completeness(28.56);
+                  navigation('/education');
+              }
+                
+            })}>
             <div className="textobj">
               <h5>
                 Enter your summary here <span className="alart">*</span>
               </h5>
-              <textarea
+              <textarea {...register('objective',{required: 'You should enter the details'})}
                 onChange={(e)=>{setObjective(e.target.value)}} value={objective}
                 placeholder="e.g. Skilled in crafting semantic and accessible HTML5. Proficient in responsive design using CSS3, Bootstrap including Flexbox and Grid. Strong in JavaScript ES6+ features, asynchronous programming, and API integration. Experienced in building React applications, utilizing hooks for state management."
-                name=""
-                id=""
+                name="objective"
+                className={errors.objective?.message&&"missed"}
               ></textarea>
+              {errors.objective?.message&&<p className="error"><FontAwesomeIcon icon={faExclamationTriangle}/> {errors.objective?.message}</p>}
             </div>
-            <Link to="/education">
               <button
+                type="submit"
                 className="btn next-btn"
-                onClick={() => {
-                  markAsSubmited("objective");
-                  trackLength(104);
-                  completeness(28.56);
-                }}
               >
                 Next
                 <FontAwesomeIcon icon={faArrowAltCircleRight} />
               </button>
-            </Link>
             </form>
           </div>
       </div>

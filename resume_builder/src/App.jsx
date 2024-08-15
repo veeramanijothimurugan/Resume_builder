@@ -39,6 +39,7 @@ function App() {
     linkedIn: "",
   });
 
+
   //objective data
   const [objective, setObjective] = useState();
 

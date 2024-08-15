@@ -7,20 +7,32 @@ import { headerContext, navigationContext } from "../../App";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useNavigate } from "react-router-dom";
 
-// const schema = yup.object().shape({
-//   firstName: yup.string().required(),
-//   lastName: yup.string().required(),
-//   jobTitle: yup.string().required(),
-//   phone: yup.string().required(),
-//   email: yup.string().email().required(),
-//   city: yup.string().required(),
-//   pincode: yup.number().required(),
-//   github: yup.string().required(),
-//   linkedIn: yup.string().required(),
-// });
+const schema = yup.object().shape({
+  firstName: yup.string().required(),
+  lastName: yup.string().required(),
+  jobTitle: yup.string().required(),
+  phone: yup.string().required(),
+  email: yup.string().email().required(),
+  city: yup.string().required(),
+  pincode: yup.number().required(),
+  github: yup.string().required(),
+  linkedIn: yup.string().required(),
+});
 
 const Heading = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isValid },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+  console.log(errors);
+
+  const navigate = useNavigate();
+
   const { markAsSubmited, trackLength, completeness } =
     useContext(navigationContext);
   const { headerDetails, setHeaderDetails } = useContext(headerContext);
@@ -45,12 +57,15 @@ const Heading = () => {
         </h4>
         <p className="alart">* indicates a require field</p>
         <form
-          onSubmit={()=>{
-            handleSubmit((data) => {
-              console.log("Methode invoked!!");
-              console.log(data);
-            })}
-          }
+          onSubmit={handleSubmit((data) => {
+            console.log(data);
+            if (isValid) {
+              markAsSubmited("heading");
+              trackLength(52);
+              completeness(14.28);
+              navigate("/objective");
+            }
+          })}
         >
           <div className="row inputfeild container-fluid">
             <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -58,21 +73,26 @@ const Heading = () => {
                 First name <span className="alart">*</span>
               </p>
               <input
+                {...register("firstName")}
                 name="firstName"
                 onChange={handledetails}
                 value={headerDetails.firstName}
                 placeholder="e.g. Veeramani"
+                className={errors.firstName?.message && "missed"}
               />
+              {/* <p className="alart">{errors.firstName?.message}</p> */}
             </div>
             <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
               <p className="lable">
                 Last name<span className="alart">*</span>
               </p>
               <input
+                {...register("lastName")}
                 onChange={handledetails}
                 value={headerDetails.lastName}
                 name="lastName"
                 placeholder="e.g. Jothimurugan"
+                className={errors.lastName?.message && "missed"}
               />
             </div>
             <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -80,10 +100,12 @@ const Heading = () => {
                 Jobtitle<span className="alart">*</span>
               </p>
               <input
+                {...register("jobTitle")}
                 onChange={handledetails}
                 name="jobTitle"
                 value={headerDetails.jobTitle}
                 placeholder="e.g. Web Developer"
+                className={errors.jobTitle?.message && "missed"}
               />
             </div>
             <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -91,10 +113,12 @@ const Heading = () => {
                 Email<span className="alart">*</span>
               </p>
               <input
+                {...register("email")}
                 name="email"
                 value={headerDetails.email}
                 placeholder="e.g. veeramanijothimurugan@gmail.com"
                 onChange={handledetails}
+                className={errors.email?.message && "missed"}
               />
             </div>
             <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -102,10 +126,12 @@ const Heading = () => {
                 Phone<span className="alart">*</span>
               </p>
               <input
+                {...register("phone")}
                 name="phone"
                 value={headerDetails.phone}
                 placeholder="e.g. +91 8072640512"
                 onChange={handledetails}
+                className={errors.phone?.message && "missed"}
               />
             </div>
             <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -113,10 +139,12 @@ const Heading = () => {
                 City<span className="alart">*</span>
               </p>
               <input
+                {...register("city")}
                 name="city"
                 value={headerDetails.city}
                 placeholder="e.g. Aruppukottai"
                 onChange={handledetails}
+                className={errors.city?.message && "missed"}
               />
             </div>
             <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -124,10 +152,12 @@ const Heading = () => {
                 Pin code<span className="alart">*</span>
               </p>
               <input
+                {...register("pincode")}
                 name="pincode"
                 value={headerDetails.pincode}
                 placeholder="e.g. 626101"
                 onChange={handledetails}
+                className={errors.pincode?.message && "missed"}
               />
             </div>
             <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -135,10 +165,12 @@ const Heading = () => {
                 Github<span className="alart">*</span>
               </p>
               <input
+                {...register("github")}
                 name="github"
                 value={headerDetails.github}
                 placeholder="e.g. https://github.com/veeramanijothimurugan"
                 onChange={handledetails}
+                className={errors.github?.message && "missed"}
               />
             </div>
             <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -146,26 +178,23 @@ const Heading = () => {
                 LinkedIn<span className="alart">*</span>
               </p>
               <input
+                {...register("linkedIn")}
                 name="linkedIn"
                 value={headerDetails.linkedIn}
                 placeholder="e.g. https://www.linkedin.com/in/veeramanijothimurugan/"
                 onChange={handledetails}
+                className={errors.linkedIn?.message && "missed"}
               />
             </div>
-            <Link to={""}>
-              <button
-                className="btn next-btn"
-                type="Submit"
-                onClick={() => {
-                  markAsSubmited("heading");
-                  trackLength(52);
-                  completeness(14.28);
-                  // console.log(headerDetails);
-                }}
-              >
-                Next <FontAwesomeIcon icon={faArrowAltCircleRight} />
-              </button>
-            </Link>
+            <div className="errmsg col-lg-4">
+              <p className="alart"></p>
+            </div>
+            <button
+              className="btn next-btn"
+              type="submit"
+            >
+              Next <FontAwesomeIcon icon={faArrowAltCircleRight} />
+            </button>
           </div>
         </form>
       </div>

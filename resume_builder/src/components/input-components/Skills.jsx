@@ -3,10 +3,11 @@ import "./css/skills.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowAltCircleRight, faPlus, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faArrowAltCircleRight, faPlus, faXmark, faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
 import { navigationContext, skillContex } from "../../App";
 
 const Skills = () => {
+
   const {markAsSubmited,trackLength,completeness} = useContext(navigationContext);
   const {skills,setSkills} = useContext(skillContex);
   const [input, setInput] = useState("");
@@ -33,7 +34,9 @@ const Skills = () => {
   return (
     <div className="skill-container container-fluid">
       <div className="col-lg-3 col-md-3 col-sm-3"></div>
-      <form onSubmit={addSkill}>
+      <form onSubmit={
+        addSkill
+      }>
         <div className="col-lg-6 col-md-6 col-sm-6">
           <div className="wordings">
             <h2 className="qus">
@@ -60,6 +63,7 @@ const Skills = () => {
             >
               ADD <FontAwesomeIcon icon={faPlus} />
             </button>
+            {skills.length <= 4 && <p className="error  adjust"><FontAwesomeIcon icon={faExclamationTriangle}/> You should enter atleast 5 skills</p>}
           </div>
           <br />
           {skills.length > 0 && (
@@ -83,7 +87,7 @@ const Skills = () => {
                   ))}
                 </ul>
               </div>
-              <Link to="/projects">
+              <Link to={skills.length>=5&&"/projects"}>
                 <button className="btn next-btn" onClick={()=>{markAsSubmited('skills'); trackLength(208);completeness(57.12)} }>Next <FontAwesomeIcon icon={faArrowAltCircleRight}/></button>
               </Link>
             </>

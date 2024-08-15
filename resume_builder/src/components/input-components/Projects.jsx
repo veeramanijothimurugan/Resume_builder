@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowAltCircleRight,
   faPlus,
+  faExclamationTriangle,
 } from "@fortawesome/free-solid-svg-icons";
 import ProjectDetail from "./ProjectDetail";
 import { navigationContext } from "../../App";
@@ -61,6 +62,7 @@ const Projects = () => {
                 </button>
               </div>
             </form>
+            {component.length <= 1&&<p className="error"><FontAwesomeIcon icon={faExclamationTriangle}/> You should add atleast 2 Projects</p>}
             {component.map((_, index) => (
               <ProjectDetail key={index} index={index} />
             ))}
