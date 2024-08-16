@@ -62,6 +62,10 @@ input:focus{
 }
 
 .missed{
-    border: 1px solid tomato;
-    box-shadow: 0px 0px 10px rgb(255, 0, 0);
+    border: 2px solid tomato;
+    box-shadow: 0px 0px 3px rgb(255, 0, 0);
+}
+
+.tuning{
+    width: 100%;
 }

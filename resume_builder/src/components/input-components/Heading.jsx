@@ -1,8 +1,7 @@
 import React, { useContext } from "react";
 import "./css/heading.css";
-import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowAltCircleRight } from "@fortawesome/free-solid-svg-icons";
+import { faArrowAltCircleRight,faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
 import { headerContext, navigationContext } from "../../App";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
@@ -56,6 +55,7 @@ const Heading = () => {
           Please include an email address and phone number.
         </h4>
         <p className="alart">* indicates a require field</p>
+        {(errors.firstName?.message||errors.lastName?.message||errors.jobTitle?.message||errors.email?.message||errors.phone?.message||errors.city?.message||errors.pincode?.message||errors.github?.message||errors.linkedIn?.message)&&(<p className="invalid col-lg-12"><FontAwesomeIcon icon={faExclamationTriangle}/> You missed some details to enter.</p>)}
         <form
           onSubmit={handleSubmit((data) => {
             console.log(data);
@@ -80,7 +80,6 @@ const Heading = () => {
                 placeholder="e.g. Veeramani"
                 className={errors.firstName?.message && "missed"}
               />
-              {/* <p className="alart">{errors.firstName?.message}</p> */}
             </div>
             <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
               <p className="lable">
@@ -185,9 +184,6 @@ const Heading = () => {
                 onChange={handledetails}
                 className={errors.linkedIn?.message && "missed"}
               />
-            </div>
-            <div className="errmsg col-lg-4">
-              <p className="alart"></p>
             </div>
             <button
               className="btn next-btn"

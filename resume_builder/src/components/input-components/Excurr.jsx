@@ -4,6 +4,11 @@ import {
   faPlus,
   faArrowAltCircleRight,
   faFileCircleCheck,
+  faExclamationCircle,
+  faDumpster,
+  faTrash,
+  faTrashAlt,
+  faTrashCan,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import "./css/excurr.css"
@@ -25,6 +30,12 @@ const excurr = () => {
       setActivities([...activites, activity.trim()]);
       setActivity("");
     }
+  };
+
+  const handleRemove = (index) => {
+    console.log("Button clicked");
+    const newArray = activites.filter((activity, i) => i !== index);
+    setActivities(newArray);
   };
 
   return (
@@ -61,10 +72,11 @@ const excurr = () => {
               </button>
             </div>
           </form>
+          {activites.length <= 1&&<p className="error"><FontAwesomeIcon icon={faExclamationCircle}/> Note: You should add atleast 2 Acitivites</p>}
           {activites.length>0&&<div className="activities">
             {activites.map((activity,index)=>(
               <ul key={index}>
-                <li className="activity">{index+1}.  {activity}</li>
+                <li className="activity">{index+1}.  {activity}<FontAwesomeIcon className="trash" onClick={()=>{handleRemove(index)}} icon={faTrashCan}/></li>
               </ul>
             ))}
           </div>}

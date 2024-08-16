@@ -55,19 +55,19 @@ function App() {
   });
 
   const [hsc, SetHsc] = useState({
-    school: "",
-    precentage: "",
-    city: "",
-    from: "",
-    to: "",
+    hscschool: "",
+    hscprecentage: "",
+    hsccity: "",
+    hscfrom: "",
+    hscto: "",
   });
 
   const [sslc, SetSslc] = useState({
-    school: "",
-    precentage: "",
-    city: "",
-    from: "",
-    to: "",
+    sslcschool: "",
+    sslcprecentage: "",
+    sslccity: "",
+    sslcfrom: "",
+    sslcto: "",
   });
 
   const [diploma, setDiploma] = useState({

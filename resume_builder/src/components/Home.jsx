@@ -23,7 +23,7 @@ import { navLinkContex } from "../App";
 const home = ({ InputTrack }) => {
   const {setBuildCV}=useContext(navLinkContex);
   return (
-    <div name="home" className="home-container container">
+    <div id="home" name="home" className="home-container container">
       <div className="intro">
         <h1 style={{ fontWeight: 800, textAlign: "center" }}>
           WELCOME TO{" "}
@@ -57,7 +57,7 @@ const home = ({ InputTrack }) => {
           out and increases your chances of getting hired.
         </p>
       </div>
-      <div name="about" className="why container">
+      <div id="about" name="about" className="why container">
         <h2 className="qus" style={{ fontWeight: 700 }}>
           WHY CHOOSE RESUME SCULPTURE?
         </h2>
@@ -164,7 +164,7 @@ const home = ({ InputTrack }) => {
           </button>
         </Link>
       </div>
-      <div className="contact container">
+      <div id="contact" name="contact" className="contact container">
         <div className="contact-left col-lg-4">
           <h3>Contact Information</h3>
           <div className="align">
@@ -192,7 +192,7 @@ const home = ({ InputTrack }) => {
           </div>
           </div>
         </div>
-        <div name="contact" className="contact-right col-lg-8">
+        <div className="contact-right col-lg-8">
           <div className="col-lg-6">
             <p>First Name</p>
             <input placeholder="e.g., Veeramani" type="text" name="" id="" />

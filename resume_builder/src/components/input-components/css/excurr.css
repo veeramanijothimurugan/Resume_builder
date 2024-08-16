@@ -1,13 +1,18 @@
-.activities{
+/* .activities{
     border: 1px solid;
     padding: 20px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-}
+} */
 
 .activity{
     list-style-type: none;
     font-size: 15px;
-    font-weight: 500;
+    font-weight: 400;
+    background-color: rgba(0, 183, 255, 0.129);
+    margin-left: -40px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    color: #000;
 }
 
 .finalize{
@@ -19,4 +24,15 @@
     border: none;
     font-size: 20px;
     background-color: green;
+}
+
+.trash{
+    color: #000000;
+    float: right;
+    padding: 1.5px;
+    font-size: 18px;
+}
+
+.trash:hover{
+    color: rgb(0, 136, 255);
 }

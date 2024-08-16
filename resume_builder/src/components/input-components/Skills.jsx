@@ -3,7 +3,7 @@ import "./css/skills.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowAltCircleRight, faPlus, faXmark, faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
+import { faArrowAltCircleRight, faPlus, faXmark, faExclamationTriangle, faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
 import { navigationContext, skillContex } from "../../App";
 
 const Skills = () => {
@@ -63,14 +63,14 @@ const Skills = () => {
             >
               ADD <FontAwesomeIcon icon={faPlus} />
             </button>
-            {skills.length <= 4 && <p className="error  adjust"><FontAwesomeIcon icon={faExclamationTriangle}/> You should enter atleast 5 skills</p>}
+            {skills.length <= 4 && <p className="error  adjust"><FontAwesomeIcon icon={faExclamationCircle}/> Note: You should enter atleast 5 skills</p>}
           </div>
           <br />
           {skills.length > 0 && (
             <>
               <div className="check-skills">
-                <h4 className="skill-title">Check your skills</h4>
-                <ul>
+                
+                <ul className="row">
                   {skills.map((skill, index) => (
                     <li
                       className="list remove col-lg-5 col-md-5 col-sm-5 col-xs-5"
@@ -78,10 +78,9 @@ const Skills = () => {
                     >
                       {skill}{" "}
                       <span
-                        className="delete"
                         onClick={() => handleRemove(index)}
                       >
-                        <FontAwesomeIcon icon={faXmark} />
+                        <FontAwesomeIcon className="delete" icon={faXmark} />
                       </span>
                     </li>
                   ))}

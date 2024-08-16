@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus,faCheck, faArrowAltCircleRight} from "@fortawesome/free-solid-svg-icons";
+import { faPlus,faArrowAltCircleRight, faExclamationCircle} from "@fortawesome/free-solid-svg-icons";
 import CertificateDetails from './CertificateDetails';
 import { Link } from 'react-router-dom';
 import { navigationContext } from '../../App';
@@ -51,6 +51,7 @@ const Certifications = () => {
             </button>
             </div>
           </form>
+          {component.length <= 1&&<p className="error"><FontAwesomeIcon icon={faExclamationCircle}/> Note: You should add atleast 2 Certificate</p>}
           {component.map((_,index)=>(
             <CertificateDetails index={index} key={index}/>
           ))}
