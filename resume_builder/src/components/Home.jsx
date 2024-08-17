@@ -12,6 +12,8 @@ import {
   faGears,
   faGraduationCap,
   faHammer,
+  faMessage,
+  faPaperPlane,
   faPhone,
   faWandSparkles,
 } from "@fortawesome/free-solid-svg-icons";
@@ -26,10 +28,7 @@ const home = ({ InputTrack }) => {
     <div id="home" name="home" className="home-container container">
       <div className="intro">
         <h1 style={{ fontWeight: 800, textAlign: "center" }}>
-          WELCOME TO{" "}
-          <span style={{ fontWeight: 800 }} className="alart">
-            RESUME SCULPTURE
-          </span>
+          Welcome to <span className="alart">Resume Sculpture</span>
         </h1>
         <h3 style={{ color: "#214974" }}>
           The Ultimate Online Resume Builder for Freshers! Create Your Resume
@@ -205,7 +204,7 @@ const home = ({ InputTrack }) => {
             <textarea placeholder="Write a messge.." className="contact-msg" name="" id=""></textarea>
           </div>
           <div>
-            <button className="send btn">Send Message</button>
+            <button className="send btn">Send Message <FontAwesomeIcon icon={faPaperPlane}/></button>
           </div>
         </div>
       </div>

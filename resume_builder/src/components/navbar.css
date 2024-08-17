@@ -1,4 +1,5 @@
-/* General Navbar Styles */
+@import url('https://fonts.googleapis.com/css2?family=Acme&family=Anton+SC&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
 .navbar {
   width: 100%;
   position: fixed;
@@ -10,22 +11,24 @@
   margin-bottom: 0;
 }
 
-/* Navbar Branding */
 .navbar-brand {
-  color: white;
-  font-size: 20px;
+  color: white !important;
+  font-size: 28px;
+  font-family: "Anton SC";
 }
 
-img {
-  width: 55px;
-  height: 60px;
+.logo-img{
+  width: 30px;
+  color: #f6c85d !important;
+  margin-top: -28px;
+  transition: .5s;
 }
 
-.title {
-  margin-right: 100px;
+.logo-img:hover{
+  color: #fff !important;
+  transform: rotate(180deg);
 }
 
-/* Navbar Links */
 .navbar-link {
   position: relative;
   padding: 10px;
@@ -34,6 +37,7 @@ img {
   color: white;
   font-size: 15px;
   transition: color 0.3s, font-weight 0.3s;
+  cursor: pointer;
 }
 
 .navbar-link::after {
@@ -53,13 +57,12 @@ img {
   bottom: 0;
 }
 
-/* Active Link Styling */
 .navbar-link.active {
-  color: white !important; /* Font color for active link */
+  color: white !important;
 }
 
 .navbar-link.active::after {
-  background-color: #408fd3; /* Blue underline for active link */
+  background-color: #408fd3;
   bottom: 0;
 }
 
@@ -67,7 +70,7 @@ img {
   background-color: #337ab7;
 }
 
-/* Navbar Button */
+
 .navbar-toggler {
   background: none;
   border: none;
@@ -83,11 +86,12 @@ img {
 }
 
 .navbar-toggler .bar {
-  width: 30px;
+  width: 20px;
   height: 3px;
   background: white;
   margin: 3px 0;
   transition: 0.3s;
+  border-radius: 10px;
 }
 
 .navbar-toggler.expanded .bar1 {
@@ -102,7 +106,6 @@ img {
   transform: rotate(45deg) translate(-5px, -6px);
 }
 
-/* Navbar Display for Different Screen Sizes */
 @media (min-width: 768px) {
   .navbar-toggler {
     display: none;
@@ -135,7 +138,6 @@ img {
   }
 }
 
-/* Button Styles */
 .btn {
   margin-right: 20px;
   font-weight: 500;
@@ -150,12 +152,10 @@ img {
   display: none;
 }
 
-/* Content Adjustment */
 .content {
   transition: margin-top 0.3s ease;
 }
 
-/* Utility Classes */
 .hide {
   display: none;
 }

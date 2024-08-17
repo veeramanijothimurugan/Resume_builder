@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
-import logo from "../assets/images/logo.png";
 import "../components/navbar.css";
 import { Link } from "react-router-dom";
 import { Link as ScrollLink } from "react-scroll";
 import { navLinkContex } from "../App";
 import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFeatherPointed } from "@fortawesome/free-solid-svg-icons";
 
 const Navbar = ({ InputTrack }) => {
   const { buildCV, setBuildCV } = useContext(navLinkContex);
@@ -21,7 +22,7 @@ const Navbar = ({ InputTrack }) => {
   useEffect(() => {
     if (navbarRef.current && contentRef.current) {
       const navbarHeight = navbarRef.current.offsetHeight;
-      const newMarginTop = isNavVisible ? navbarHeight * .9 : 0;
+      const newMarginTop = isNavVisible ? navbarHeight * 0.9 : 0;
       setContentMargin(newMarginTop);
     }
   }, [isNavVisible]);
@@ -30,15 +31,21 @@ const Navbar = ({ InputTrack }) => {
 
   return (
     <>
-      <nav className="navbar navbar-inverse navbar-bottom-fixed" ref={navbarRef}>
+      <nav
+        className="navbar navbar-inverse navbar-bottom-fixed"
+        ref={navbarRef}
+      >
         <div className="container-fluid">
           <div className="navbar-header">
-            <img className="navbar-brand logo-img" src={logo} alt="Logo" />
-            <a className="navbar-brand title" href="#">
+            <a className="navbar-brand title" href="/">
+              <FontAwesomeIcon
+                className="navbar-brand logo-img"
+                icon={faFeatherPointed}
+              />
               RESUME SCULPTURE
             </a>
             <button
-              className={`navbar-toggler ${isNavVisible ? 'expanded' : ''}`}
+              className={`navbar-toggler ${isNavVisible ? "expanded" : ""}`}
               onClick={toggleNav}
             >
               <span className="bar bar1"></span>
@@ -47,14 +54,16 @@ const Navbar = ({ InputTrack }) => {
             </button>
           </div>
           <ul
-            className={`nav navbar-nav navbar-right ${isNavVisible ? 'show' : ''}`}
+            className={`nav navbar-nav navbar-right ${
+              isNavVisible ? "show" : ""
+            }`}
           >
             <li>
               <ScrollLink
                 onClick={() => {
                   InputTrack(false);
                   setBuildCV(false);
-                  navigation('/');
+                  navigation("/");
                 }}
                 to="home"
                 spy={true}
