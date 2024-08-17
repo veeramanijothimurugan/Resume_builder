@@ -1,7 +1,7 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import "./css/objective.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowAltCircleRight, faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
+import { faArrowAltCircleLeft, faArrowAltCircleRight, faArrowLeft, faArrowLeftLong, faArrowRight, faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
 import { navigationContext, objectiveContext } from "../../App";
 import { useForm } from "react-hook-form";
 import { useNavigate } from 'react-router-dom';
@@ -54,12 +54,12 @@ const objective = ({}) => {
               ></textarea>
               {errors.objective?.message&&<p className="error"><FontAwesomeIcon icon={faExclamationTriangle}/> {errors.objective?.message}</p>}
             </div>
+              <button className="btn back-btn next-btn" onClick={()=>{navigation('/heading')}}><FontAwesomeIcon icon={faArrowAltCircleLeft} /> Back</button>
               <button
                 type="submit"
                 className="btn next-btn"
               >
-                Next
-                <FontAwesomeIcon icon={faArrowAltCircleRight} />
+                Next <FontAwesomeIcon icon={faArrowAltCircleRight} />
               </button>
             </form>
           </div>

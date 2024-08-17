@@ -12,8 +12,7 @@
 
 @media (max-width: 768px) {
     .intro h1, .intro span{
-        font-family: "Rancho";
-        font-size: 5rem;
+        font-size: 2rem;
     }
     .resume-img{
         height: 10% !important;
@@ -29,8 +28,7 @@
 
 @media (max-width: 576px){
     .intro h1, .intro span{
-        font-family: "Rancho";
-        font-size: 5rem;
+        font-size: 2rem;
     }
     .resume-img{
         left: 32% !important;
@@ -61,7 +59,6 @@
 }
 
 .intro h1, .intro span{
-    font-family: "Anton SC";
     font-size: 5rem;
 }
 
@@ -70,16 +67,6 @@
     flex-direction: column;
 }
 
-.tleft{
-    background-color: black;
-    color: #fff;
-    font-family: "Anton SC";
-    padding: 20px;
-}
-
-.tRigth{
-
-}
 
 
 .bg{

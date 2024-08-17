@@ -13,7 +13,8 @@
 }
 
 .row{
-    width: 110%;
+    width: 104%;
+    margin-top: 20px;
 }
 
 .list{
@@ -31,4 +32,21 @@
     width: 100%;
     padding: 11px;
     border: 1px solid;
+}
+
+.additional{
+    float: right;
+    transition: .5s;
+}
+
+.cover{
+    border: 1px solid;
+    padding: 10px 15px;
+    width: 100%;
+    border-radius: 5px;
+    background-color: rgba(102, 51, 153, 0.237);
+}
+
+.margin{
+    margin-bottom: 20px;
 }

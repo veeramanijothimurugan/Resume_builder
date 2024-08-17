@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import "./css/heading.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowAltCircleRight,faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
+import { faArrowAltCircleRight,faArrowRight,faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
 import { headerContext, navigationContext } from "../../App";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";

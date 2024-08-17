@@ -1,11 +1,12 @@
 import React, { useContext, useState } from "react";
 import "./css/project.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowAltCircleRight,
   faPlus,
   faExclamationTriangle,
+  faArrowAltCircleLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import ProjectDetail from "./ProjectDetail";
 import { navigationContext } from "../../App";
@@ -15,6 +16,7 @@ const Projects = () => {
     useContext(navigationContext);
   const [num, setNum] = useState(0);
   const [component, setComponent] = useState([]);
+  const navigation = useNavigate();
 
   const handleNum = (event) => {
     setNum(parseInt(event.target.value));
@@ -80,6 +82,7 @@ const Projects = () => {
                 </button>
               </Link>
             )}
+            <button className="btn back-btn next-btn" onClick={()=>{navigation('/skills')}}><FontAwesomeIcon icon={faArrowAltCircleLeft} /> Back</button>
           </div>
         </div>
       </div>

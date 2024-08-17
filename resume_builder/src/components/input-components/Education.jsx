@@ -1,13 +1,14 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./css/education.css";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowAltCircleRight, faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
-import { eduContex, navigationContext } from "../../App";
+import { faArrowAltCircleLeft, faArrowAltCircleRight, faArrowLeft, faExclamationCircle, faExclamationTriangle, faMinus } from "@fortawesome/free-solid-svg-icons";
+import { eduContex, navigationContext, showEduContex } from "../../App";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate } from "react-router-dom";
+import { faAdd } from "@fortawesome/free-solid-svg-icons/faAdd";
 
 const schema = yup.object().shape({
   college: yup.string().required(' College is required'),
@@ -26,7 +27,7 @@ const schema = yup.object().shape({
 
 
 const Education = () => {
-  const {register, handleSubmit, formState: {errors}} = useForm({
+  const {register, handleSubmit, formState: {errors, isValid}} = useForm({
     resolver: yupResolver(schema)
   });
   console.log(errors);
@@ -45,6 +46,7 @@ const Education = () => {
     diploma,
     setDiploma,
   } = useContext(eduContex);
+  const {showB,showD,showHsc,showSslc,setShowB,setShowD,setShowHsc,setShowSslc} = useContext(showEduContex);
 
   const handleBachelorData = (event) => {
     const { name, value } = event.target;
@@ -84,7 +86,7 @@ const Education = () => {
   const years = [];
   const generateYear = () => {
     const currentYear = new Date().getFullYear();
-    for (let year = currentYear - 5; year <= currentYear + 5; year++) {
+    for (let year = currentYear - 10; year <= currentYear + 10; year++) {
       years.push(year);
     }
   };
@@ -104,6 +106,7 @@ const Education = () => {
     "M.Ed",
     "MBA",
   ];
+  
 
   return (
     <div>
@@ -118,14 +121,19 @@ const Education = () => {
             </ul>
           </div>
           <p className="alart">*indicates a require field</p>
+          {!isValid&& <p className="error"><FontAwesomeIcon icon={faExclamationCircle}/> Note: You must add educational detail.</p>}
           <form onSubmit={handleSubmit(()=>{
             navigation('/skills')
           })}>
-            <h4 className="heading">Bachelors</h4>
-            <div className="row">
+            <h4 className="heading  cover">Bachelors{showB?<FontAwesomeIcon onClick={()=>{setShowB(false)}} className="additional" icon={faMinus}/>:<FontAwesomeIcon onClick={()=>{setShowB(true)}} className="additional" icon={faAdd}/>}</h4>
+            {showB&&<>
+              {(errors.cgpa?.message||errors.college?.message||errors.city?.message||errors.from?.message||errors.to?.message||errors.field?.message||errors.degree?.message)&&(<p className="invalid"><FontAwesomeIcon icon={faExclamationTriangle}/>You entered invalid detail or missed some details to enter.</p>)}
+              {(bachelorsData.from >= bachelorsData.to)&&<p className="invalid"><FontAwesomeIcon icon={faExclamationTriangle}/> The "to year" must be greater from the "from year".</p>}
+            </>}
+            {showB&&(<div className="row">
               <div className="col-lg-4 col-md-4">
                 <p className="lable">
-                  College Names <span className="alart">*</span>
+                  College Name <span className="alart">*</span>
                 </p>
                 <input className={errors.college?.message && "missed"}
                   name="college" {...register('college')}
@@ -199,7 +207,7 @@ const Education = () => {
                   onChange={handleBachelorData}
                   id="degree"
                 >
-                  <option>Select</option>
+                  <option value={null}>Select</option>
                   {years.map((year, index) => (
                     <option key={index} value={year}>
                       {year}
@@ -217,7 +225,7 @@ const Education = () => {
                   onChange={handleBachelorData}
                   id="degree"
                 >
-                  <option value={""}>Select</option>
+                  <option value={"select"}>Select</option>
                   {years.map((year, index) => (
                     <option key={index} value={year}>
                       {year}
@@ -225,13 +233,13 @@ const Education = () => {
                   ))}
                 </select>
               </div>
-            </div>
+            </div>)}
 
             {/* HSC */}
-            <h4 className="heading">HSC (Optional)</h4>
-            <div className="row">
+            <h4 className="heading cover">HSC {showHsc?<FontAwesomeIcon onClick={()=>{setShowHsc(false)}} className="additional" icon={faMinus}/>:<FontAwesomeIcon onClick={()=>{setShowHsc(true)}} className="additional" icon={faAdd}/>} </h4>
+            {showHsc&&(<div className="row">
               <div className="col-lg-4  col-md-4">
-                <p className="lable">School Name</p>
+                <p className="lable">School Name <span className="alart">*</span></p>
                 <input
                   name="hscschool"
                   onChange={handleHscData}
@@ -241,7 +249,7 @@ const Education = () => {
                 />
               </div>
               <div className="col-lg-4 col-md-4">
-                <p className="lable">Percentage</p>
+                <p className="lable">Percentage <span className="alart">*</span></p>
                 <input 
                   name="hscprecentage"
                   onChange={handleHscData}
@@ -251,7 +259,7 @@ const Education = () => {
                 />
               </div>
               <div className="col-lg-4 col-md-4">
-                <p className="lable">City</p>
+                <p className="lable">City <span className="alart">*</span></p>
                 <input 
                   name="hsccity"
                   onChange={handleHscData}
@@ -261,7 +269,7 @@ const Education = () => {
                 />
               </div>
               <div className="col-lg-6 col-md-6">
-                <p className="lable">From</p>
+                <p className="lable">From <span className="alart">*</span></p>
                 <select
                   name="hscfrom"
                   id="degree"
@@ -277,7 +285,7 @@ const Education = () => {
                 </select>
               </div>
               <div className="col-lg-6 col-md-6">
-                <p className="lable">To</p>
+                <p className="lable">To <span className="alart">*</span></p>
                 <select
                   name="hscto"
                   id="degree"
@@ -292,11 +300,15 @@ const Education = () => {
                   ))}
                 </select>
               </div>
-            </div>
+            </div>)}
 
             {/* SSLC */}
-            <h4 className="heading">SSLC</h4>
-            <div className="row">
+            <h4 className="heading cover">SSLC{showSslc?<FontAwesomeIcon onClick={()=>{setShowSslc(false)}} className="additional" icon={faMinus}/>:<FontAwesomeIcon onClick={()=>{setShowSslc(true)}} className="additional" icon={faAdd}/>}</h4>
+            {showSslc&&<>
+              {(errors.sslcschool?.message||errors.sslcpercentage?.message||errors.sslccity?.message||errors.sslcfrom?.message||errors.sslcto?.message)&&(<p className="invalid"><FontAwesomeIcon icon={faExclamationTriangle}/>You entered invalid detail or missed some details to enter.</p>)}
+              {(sslc.sslcfrom >= sslc.sslcto)&&<p className="invalid"><FontAwesomeIcon icon={faExclamationTriangle}/> The "to year" must be greater from the "from year".</p>}
+            </>}
+            {showSslc&&(<div className="row">
               <div className="col-lg-4 col-md-4">
                 <p className="lable">
                   School Name<span className="alart">*</span>
@@ -369,15 +381,19 @@ const Education = () => {
                   ))}
                 </select>
               </div>
+            </div>)}
+            {/* diploma */}
+            <div>
+              <h4 className="heading cover">Diploma{showD?<FontAwesomeIcon onClick={()=>{setShowD(false)}} className="additional" icon={faMinus}/>:<FontAwesomeIcon onClick={()=>{setShowD(true)}} className="additional" icon={faAdd}/>}</h4>
             </div>
-            <h4 className="heading">Diploma (Optional)</h4>
-            <div className="row">
+            
+            {showD&&(<div className="row">
               <div className="col-lg-6  col-md-6">
                 <p className="lable">College Name</p>
                 <input
-                  name="college"
+                  name="dcollege"
                   onChange={handleDiplomaData}
-                  value={diploma.college}
+                  value={diploma.dcollege}
                   placeholder="e.g. XXX Diploma College"
                   type="text"
                 />
@@ -385,9 +401,9 @@ const Education = () => {
               <div className="col-lg-6  col-md-6">
                 <p className="lable">Field of Study</p>
                 <input
-                  name="field"
+                  name="dfield"
                   onChange={handleDiplomaData}
-                  value={diploma.field}
+                  value={diploma.dfield}
                   placeholder="e.g. Information Technology"
                   type="text"
                 />
@@ -395,9 +411,9 @@ const Education = () => {
               <div className="col-lg-6 col-md-6">
                 <p className="lable">Percentage</p>
                 <input
-                  name="precentage"
+                  name="dpercentage"
                   onChange={handleDiplomaData}
-                  value={diploma.precentage}
+                  value={diploma.dpercentage}
                   placeholder="e.g. 79"
                   type="text"
                 />
@@ -405,9 +421,9 @@ const Education = () => {
               <div className="col-lg-6 col-md-6">
                 <p className="lable">City</p>
                 <input
-                  name="city"
+                  name="dcity"
                   onChange={handleDiplomaData}
-                  value={diploma.city}
+                  value={diploma.dcity}
                   placeholder="e.g. YYY"
                   type="text"
                 />
@@ -415,9 +431,9 @@ const Education = () => {
               <div className="col-lg-6 col-md-6">
                 <p className="lable">From</p>
                 <select
-                  name="from"
+                  name="dfrom"
                   id="degree"
-                  value={diploma.from}
+                  value={diploma.dfrom}
                   onChange={handleDiplomaData}
                 >
                   <option value={""}>Select</option>
@@ -431,9 +447,9 @@ const Education = () => {
               <div className="col-lg-6 col-md-6">
                 <p className="lable">To</p>
                 <select
-                  name="to"
+                  name="dto"
                   id="degree"
-                  value={diploma.to}
+                  value={diploma.dto}
                   onChange={handleDiplomaData}
                 >
                   <option value={""}>Select</option>
@@ -444,19 +460,8 @@ const Education = () => {
                   ))}
                 </select>
               </div>
-            </div>
-            {errors.cgpa?.message&&<p className="error"><FontAwesomeIcon icon={faExclamationTriangle}/>{errors.cgpa?.message}</p>}
-            {errors.college?.message&&<p className="error"><FontAwesomeIcon icon={faExclamationTriangle}/>{errors.college?.message}</p>}
-            {errors.city?.message&&<p className="error"><FontAwesomeIcon icon={faExclamationTriangle}/>{errors.city?.message}</p>}
-            {errors.from?.message&&<p className="error"><FontAwesomeIcon icon={faExclamationTriangle}/>{errors.from?.message}</p>}
-            {errors.to?.message&&<p className="error"><FontAwesomeIcon icon={faExclamationTriangle}/>{errors.to?.message}</p>}
-            {errors.field?.message&&<p className="error"><FontAwesomeIcon icon={faExclamationTriangle}/>{errors.field?.message}</p>}
-            {errors.degree?.message&&<p className="error"><FontAwesomeIcon icon={faExclamationTriangle}/>{errors.degree?.message}</p>}
-            {errors.sslcschool?.message&&<p className="error"><FontAwesomeIcon icon={faExclamationTriangle}/>{errors.sslcschool?.message}</p>}
-            {errors.sslcpercentage?.message&&<p className="error"><FontAwesomeIcon icon={faExclamationTriangle}/>{errors.sslcpercentage?.message}</p>}
-            {errors.sslccity?.message&&<p className="error"><FontAwesomeIcon icon={faExclamationTriangle}/>{errors.sslccity?.message}</p>}
-            {errors.sslcfrom?.message&&<p className="error"><FontAwesomeIcon icon={faExclamationTriangle}/>{errors.sslcfrom?.message}</p>}
-            {errors.sslcto?.message&&<p className="error"><FontAwesomeIcon icon={faExclamationTriangle}/>{errors.sslcto?.message}</p>}
+            </div>)}
+            <button className="btn back-btn next-btn" onClick={()=>{navigation('/objective')}}><FontAwesomeIcon icon={faArrowAltCircleLeft} /> Back</button>
             <button
               className="btn next-btn"
               type="submit"

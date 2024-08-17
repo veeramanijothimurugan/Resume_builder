@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import "./css/skills.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowAltCircleRight, faPlus, faXmark, faExclamationTriangle, faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
+import { faArrowAltCircleRight, faPlus, faXmark, faExclamationTriangle, faExclamationCircle, faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
 import { navigationContext, skillContex } from "../../App";
 
 const Skills = () => {
@@ -11,6 +11,7 @@ const Skills = () => {
   const {markAsSubmited,trackLength,completeness} = useContext(navigationContext);
   const {skills,setSkills} = useContext(skillContex);
   const [input, setInput] = useState("");
+  const navigation = useNavigate();
 
   const settingSkill = (event) => {
     const skill = event.target.value;
@@ -91,6 +92,7 @@ const Skills = () => {
               </Link>
             </>
           )}
+          <button className="btn back-btn next-btn" onClick={()=>{navigation('/education')}}><FontAwesomeIcon icon={faArrowAltCircleLeft} /> Back</button>
         </div>
       </form>
     </div>

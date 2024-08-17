@@ -1,5 +1,5 @@
 .resume-container{
-    top: 20px;
+    top: 10px;
     padding: 20px;
     width: 100%;
     position: absolute;
@@ -20,7 +20,7 @@
 }
 
 .resume{
-    margin-top: 30px;
+    margin-top: 0px;
     width: 100%;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     padding: 30px 50px;
@@ -31,7 +31,7 @@
 }
 
 .objective{
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 .line{
@@ -91,9 +91,17 @@
 @media print {
     .link {
       text-decoration: none !important;
-      color: rgb(0, 123, 255) !important;
+      color: rgb(0, 91, 188) !important;
     }
     .resume a[href]::after {
       content: '';
     }
+  }
+
+  .caps{
+    text-transform: uppercase;
+  }
+
+  .projects{
+    margin-top: 10px;
   }

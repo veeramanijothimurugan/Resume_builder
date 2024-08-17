@@ -24,6 +24,7 @@ export const certifyContex = createContext();
 export const extraContex = createContext();
 export const navLinkContex = createContext();
 export const clickContex = createContext();
+export const showEduContex = createContext();
 
 function App() {
   //header data
@@ -64,19 +65,19 @@ function App() {
 
   const [sslc, SetSslc] = useState({
     sslcschool: "",
-    sslcprecentage: "",
+    sslcpercentage: "",
     sslccity: "",
     sslcfrom: "",
     sslcto: "",
   });
 
   const [diploma, setDiploma] = useState({
-    college: "",
-    field: "",
-    city: "",
-    precentage: "",
-    from: "",
-    to: "",
+    dcollege: "",
+    dfield: "",
+    dcity: "",
+    dpercentage: "",
+    dfrom: "",
+    dto: "",
   });
 
   //skill data
@@ -128,6 +129,11 @@ function App() {
     setShowInput(result);
   };
 
+  const [showB,setShowB] = useState(false);
+  const [showHsc,setShowHsc] = useState(false);
+  const [showSslc,setShowSslc] = useState(false);
+  const [showD,setShowD] = useState(false);
+
   return (
     <>
       <navigationContext.Provider
@@ -155,6 +161,7 @@ function App() {
                     <extraContex.Provider value={{ activites, setActivities }}>
                       <navLinkContex.Provider value={{ buildCV, setBuildCV }}>
                         <clickContex.Provider value={{click,setClick}}>
+                          <showEduContex.Provider value={{showB,showD,showHsc,showSslc,setShowB,setShowD,setShowHsc,setShowSslc}}>
                           <Router>
                             <Navbar InputTrack={InputTrack} />
                             {showInput && (
@@ -205,6 +212,7 @@ function App() {
                               <Route element={<CertificateDetails />}></Route>
                             </Routes>
                           </Router>
+                          </showEduContex.Provider>   
                         </clickContex.Provider>
                       </navLinkContex.Provider>
                     </extraContex.Provider>

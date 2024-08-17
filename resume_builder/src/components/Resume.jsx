@@ -7,11 +7,12 @@ import {
   headerContext,
   objectiveContext,
   projectContex,
+  showEduContex,
   skillContex,
 } from "../App";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
-import { useReactToPrint } from 'react-to-print';
+import { useReactToPrint } from "react-to-print";
 
 const resume = () => {
   const { headerDetails } = useContext(headerContext);
@@ -21,11 +22,17 @@ const resume = () => {
   const { projects } = useContext(projectContex);
   const { certificates } = useContext(certifyContex);
   const { activites } = useContext(extraContex);
+  const {
+    showB,
+    showD,
+    showHsc,
+    showSslc,
+  } = useContext(showEduContex);
 
   const resumeRef = useRef();
 
   const handleDownload = useReactToPrint({
-    content: ()=> resumeRef.current,
+    content: () => resumeRef.current,
   });
 
   return (
@@ -38,10 +45,10 @@ const resume = () => {
           </div>
           <div className="resume" ref={resumeRef}>
             <div className="header">
-              <h4>
+              <h4 className="caps">
                 {headerDetails.firstName} {headerDetails.lastName}
               </h4>
-              <h5>{headerDetails.jobTitle}</h5>
+              <h5 className="caps">{headerDetails.jobTitle}</h5>
               <h6>
                 {headerDetails.phone} |{" "}
                 <a className="mail link" href="">
@@ -67,33 +74,58 @@ const resume = () => {
             <div className="education">
               <h5>EDUCATION</h5>
               <hr className="line" />
-              <h6 className="para">{bachelorsData.college}</h6>
-              <h6 className="right">{bachelorsData.city}</h6>
-              <h6>
-                {bachelorsData.field} | CGPA: {bachelorsData.cgpa}
-              </h6>
-              <h6 className="right">({bachelorsData.from} - {bachelorsData.to})</h6>
-              <h6 className="next">{hsc.school}</h6>
-              <h6 className="right">{hsc.city}</h6>
-              <h6>12th | Percentage: {hsc.precentage}%</h6>
-              <h6 className="right">({hsc.from} - {hsc.to})</h6>
-              <h6 className="next">{sslc.school}</h6>
-              <h6 className="right">{sslc.city}</h6>
-              <h6>10th | Percentage: {sslc.precentage}%</h6>
-              <h6 className="right">({sslc.from} - {sslc.to})</h6>
-              <h6 className="next">{diploma.college}</h6>
-              <h6 className="right">{diploma.city}</h6>
-              <h6>
-                {diploma.field} | CGPA: {diploma.cgpa}
-              </h6>
-              <h6 className="right">({sslc.from} - {sslc.to})</h6>
+              {showB && (
+                <>
+                  <h6 className="para">{bachelorsData.college}</h6>
+                  <h6 className="right">{bachelorsData.city}</h6>
+                  <h6>
+                   {bachelorsData.degree} | {bachelorsData.field} | CGPA: {bachelorsData.cgpa}
+                  </h6>
+                  <h6 className="right">
+                    ({bachelorsData.from} - {bachelorsData.to})
+                  </h6>
+                </>
+              )}
+
+              {showHsc && (
+                <>
+                  <h6 className="next">{hsc.school}</h6>
+                  <h6 className="right">{hsc.city}</h6>
+                  <h6>12th | Percentage: {hsc.hscprecentage}%</h6>
+                  <h6 className="right">
+                    ({hsc.hscfrom} - {hsc.hscto})
+                  </h6>
+                </>
+              )}
+              {showSslc && (
+                <>
+                  <h6 className="next">{sslc.sslcschool}</h6>
+                  <h6 className="right">{sslc.sslccity}</h6>
+                  <h6>10th | Percentage: {sslc.sslcpercentage}%</h6>
+                  <h6 className="right">
+                    ({sslc.sslcfrom} - {sslc.sslcto})
+                  </h6>
+                </>
+              )}
+              {showD && (
+                <>
+                  <h6 className="next">{diploma.dcollege}</h6>
+                  <h6 className="right">{diploma.dcity}</h6>
+                  <h6>
+                    {diploma.dfield} | CGPA: {diploma.dpercentage}
+                  </h6>
+                  <h6 className="right">
+                    ({diploma.dfrom} - {diploma.dto})
+                  </h6>
+                </>
+              )}
             </div>
             <div className="education">
               <h5>SKILLS</h5>
               <hr className="line" />
               <div className="skills">
                 {skills.map((skill) => (
-                 <p className="para"> {skill} | </p>
+                  <p className="para"> {skill} | </p>
                 ))}
               </div>
             </div>
@@ -145,7 +177,15 @@ const resume = () => {
               </ul>
             </div>
           </div>
-          <button className="btn btn-primary download" onClick={()=>{console.log("button clicked"); handleDownload();}}>Download Resume <FontAwesomeIcon icon={faDownload}/></button>
+          <button
+            className="btn btn-primary download"
+            onClick={() => {
+              console.log("button clicked");
+              handleDownload();
+            }}
+          >
+            Download Resume <FontAwesomeIcon icon={faDownload} />
+          </button>
         </div>
       </div>
     </>

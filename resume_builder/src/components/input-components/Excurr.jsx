@@ -5,20 +5,20 @@ import {
   faArrowAltCircleRight,
   faFileCircleCheck,
   faExclamationCircle,
-  faDumpster,
-  faTrash,
-  faTrashAlt,
   faTrashCan,
+  faArrowAltCircleLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import "./css/excurr.css"
 import { extraContex, navigationContext } from "../../App";
+import { useNavigate } from "react-router-dom";
 
 const excurr = () => {
   const {markAsSubmited,completeness} = useContext(navigationContext);
   const {activites, setActivities} = useContext(extraContex);
   const [activity, setActivity] = useState("");
   const [finalize,setFinalize] = useState(false);
+  const navigation = useNavigate();
 
   const handleActivity = (e) => {
     setActivity(e.target.value);
@@ -82,6 +82,7 @@ const excurr = () => {
           </div>}
           {activites.length>0&&!finalize &&<button className='btn next-btn' onClick={()=>{setFinalize(true);markAsSubmited('extracurricular');completeness(100)}}>Next <FontAwesomeIcon icon={faArrowAltCircleRight}/></button>}
           {finalize && <Link to="/resume"><button className="finalize">Finalize <FontAwesomeIcon icon={faFileCircleCheck}/></button></Link>}
+          <button className="btn back-btn next-btn" onClick={()=>{navigation('/certifications')}}><FontAwesomeIcon icon={faArrowAltCircleLeft} /> Back</button>
         </div>
       </div>
     </>

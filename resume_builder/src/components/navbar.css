@@ -13,7 +13,7 @@
 
 .navbar-brand {
   color: white !important;
-  font-size: 28px;
+  font-size: 22px;
   font-family: "Anton SC";
 }
 
@@ -83,6 +83,7 @@
   margin-left: auto;
   color: white;
   font-size: 20px;
+  margin-right: 10px;
 }
 
 .navbar-toggler .bar {
@@ -132,7 +133,7 @@
   }
 }
 
-@media (max-width: 450px) {
+@media (min-width: 450px) {
   .navbar-toggler {
     display: block;
   }

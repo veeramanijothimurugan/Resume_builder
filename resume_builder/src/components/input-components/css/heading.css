@@ -51,14 +51,18 @@ input:focus{
 }
 
 .next-btn{
-    margin-top: 20px;
-    padding: 10px 15px;
+    margin-top: 40px;
+    padding: 10px 20px;
     color: #003464 !important;
     float: right;
     margin-right: 10px;
     font-size: 20px;
     background-color: transparent;
+    border-radius: 50px;
+}
 
+.next-btn:hover{
+    color: rgb(0, 0, 0) !important;
 }
 
 .missed{
