@@ -1,4 +1,4 @@
-import { React, useContext, useRef } from "react";
+import React, { useContext } from "react";
 import "../components/resume.css";
 import {
   certifyContex,
@@ -12,9 +12,10 @@ import {
 } from "../App";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
-import { useReactToPrint } from "react-to-print";
+import jsPDF from "jspdf";
+import {customFont} from "../fonts/base64-custom-font";
 
-const resume = () => {
+const Resume = () => {
   const { headerDetails } = useContext(headerContext);
   const { objective } = useContext(objectiveContext);
   const { bachelorsData, hsc, sslc, diploma } = useContext(eduContex);
@@ -29,11 +30,27 @@ const resume = () => {
     showSslc,
   } = useContext(showEduContex);
 
-  const resumeRef = useRef();
+  const handleDownload = (divId, title) => {
+    const element = document.getElementById(divId);
 
-  const handleDownload = useReactToPrint({
-    content: () => resumeRef.current,
-  });
+    if (element) {
+      const doc = new jsPDF();
+      doc.addFileToVFS("Rubik.ttf", customFont);
+      doc.addFont("Rubik.ttf", "custom-font", "normal");
+      doc.html(element, {
+        callback: function (pdf) {
+          pdf.setFont("custom-font");
+          pdf.save(`${title}.pdf`);
+        },
+        x: 5,
+        y: 10,
+        width: 190,
+        windowWidth: 675
+      });
+    } else {
+      console.error('Element not found');
+    }
+  };
 
   return (
     <>
@@ -43,7 +60,7 @@ const resume = () => {
           <div className="heading">
             <h3 className="thalaipu">Resume Preview</h3>
           </div>
-          <div className="resume" ref={resumeRef}>
+          <div className="resume" id="resume">
             <div className="header">
               <h4 className="caps">
                 {headerDetails.firstName} {headerDetails.lastName}
@@ -51,7 +68,7 @@ const resume = () => {
               <h5 className="caps">{headerDetails.jobTitle}</h5>
               <h6>
                 {headerDetails.phone} |{" "}
-                <a className="mail link" href="">
+                <a className="mail link" href={`mailto:${headerDetails.email}`}>
                   {headerDetails.email}
                 </a>{" "}
                 | {headerDetails.city}
@@ -62,7 +79,7 @@ const resume = () => {
                 </a>{" "}
                 |{" "}
                 <a className="mail link" href={headerDetails.linkedIn}>
-                  LinedIn
+                  LinkedIn
                 </a>
               </h5>
             </div>
@@ -79,7 +96,7 @@ const resume = () => {
                   <h6 className="para">{bachelorsData.college}</h6>
                   <h6 className="right">{bachelorsData.city}</h6>
                   <h6>
-                   {bachelorsData.degree} | {bachelorsData.field} | CGPA: {bachelorsData.cgpa}
+                    {bachelorsData.degree} | {bachelorsData.field} | CGPA: {bachelorsData.cgpa}
                   </h6>
                   <h6 className="right">
                     ({bachelorsData.from} - {bachelorsData.to})
@@ -124,8 +141,8 @@ const resume = () => {
               <h5>SKILLS</h5>
               <hr className="line" />
               <div className="skills">
-                {skills.map((skill) => (
-                  <p className="para"> {skill} | </p>
+                {skills.map((skill, index) => (
+                  <p key={index} className="para"> {skill} | </p>
                 ))}
               </div>
             </div>
@@ -150,11 +167,11 @@ const resume = () => {
               </ol>
             </div>
             <div className="certificate education">
-              <h5>CERTICATIONS</h5>
+              <h5>CERTIFICATIONS</h5>
               <hr className="line" />
               <ul className="probj">
-                {certificates.map((certificate) => (
-                  <li>
+                {certificates.map((certificate, index) => (
+                  <li key={index}>
                     <p className="para">
                       {certificate.name} – {certificate.provider}
                     </p>
@@ -169,8 +186,8 @@ const resume = () => {
               <h5>EXTRACURRICULAR ACTIVITIES</h5>
               <hr className="line" />
               <ul className="probj">
-                {activites.map((activity) => (
-                  <li>
+                {activites.map((activity, index) => (
+                  <li key={index}>
                     <p className="para">{activity}</p>
                   </li>
                 ))}
@@ -179,10 +196,7 @@ const resume = () => {
           </div>
           <button
             className="btn btn-primary download"
-            onClick={() => {
-              console.log("button clicked");
-              handleDownload();
-            }}
+            onClick={() => handleDownload('resume', 'Resume')}
           >
             Download Resume <FontAwesomeIcon icon={faDownload} />
           </button>
@@ -192,4 +206,4 @@ const resume = () => {
   );
 };
 
-export default resume;
+export default Resume;
