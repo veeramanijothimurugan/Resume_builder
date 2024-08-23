@@ -12,8 +12,11 @@ import {
 } from "../App";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
-import jsPDF from "jspdf";
-import {customFont} from "../fonts/base64-custom-font";
+import pdfMake from "pdfmake/build/pdfmake";
+import pdfFonts from "pdfmake/build/vfs_fonts";
+import { text } from "@fortawesome/fontawesome-svg-core";
+
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 const Resume = () => {
   const { headerDetails } = useContext(headerContext);
@@ -23,33 +26,355 @@ const Resume = () => {
   const { projects } = useContext(projectContex);
   const { certificates } = useContext(certifyContex);
   const { activites } = useContext(extraContex);
-  const {
-    showB,
-    showD,
-    showHsc,
-    showSslc,
-  } = useContext(showEduContex);
+  const { showB, showD, showHsc, showSslc } = useContext(showEduContex);
 
-  const handleDownload = (divId, title) => {
-    const element = document.getElementById(divId);
-
-    if (element) {
-      const doc = new jsPDF();
-      doc.addFileToVFS("Rubik.ttf", customFont);
-      doc.addFont("Rubik.ttf", "custom-font", "normal");
-      doc.html(element, {
-        callback: function (pdf) {
-          pdf.setFont("custom-font");
-          pdf.save(`${title}.pdf`);
+  const handleDownload = () => {
+    const docDefinition = {
+      content: [
+        {
+          text: `${headerDetails.firstName.toUpperCase()} ${headerDetails.lastName.toUpperCase()}`,
+          style: 'header',
+          alignment: 'center',
+          lineHeight: 1.5
         },
-        x: 5,
-        y: 10,
-        width: 190,
-        windowWidth: 675
-      });
-    } else {
-      console.error('Element not found');
-    }
+        {
+          text: `${headerDetails.jobTitle.toUpperCase()}`,
+          style: 'subheader',
+          alignment: 'center'
+        },
+        {
+          text: `${headerDetails.phone} | ${headerDetails.email} | ${headerDetails.city} - ${headerDetails.pincode}`,
+          style: 'info',
+          alignment: 'center'
+        },
+          {
+            text: [
+              {
+                text: 'GitHub', color: '#3572EF', link: `${headerDetails.github}`,
+                style: 'contact',
+              },
+              { text: ' | ', style: 'info' },
+              {
+                text: 'LinkedIn', color: '#3572EF', link: `${headerDetails.linkedIn}`,
+                style: 'contact',
+              }
+            ],
+            alignment: 'center', 
+          },
+        {
+          text: 'PROFESSIONAL OBJECTIVE',
+          style: 'sectionHeader',
+        },
+        {
+          canvas: [
+            {
+              type: 'line',
+              x1: 0,
+              y1: 0,
+              x2: 515, 
+              y2: 0,
+              lineWidth: 2,
+              color: '#000000'
+            }
+          ],
+          margin: [0, 3, 0, 3]
+        },
+        {
+          text: objective,
+          style: 'normal',
+        },
+        {
+          text: 'EDUCATION',
+          style: 'sectionHeader',
+        },
+        {
+          canvas: [
+            {
+              type: 'line',
+              x1: 0,
+              y1: 0,
+              x2: 515,  
+              y2: 0,
+              lineWidth: 2,
+              color: '#000000'
+            }
+          ],
+          margin: [0, 3, 0, 3] 
+        },
+        ...(!showB ? [] : [
+          {
+            columns: [
+              {
+                text: `${bachelorsData.college.toUpperCase()}`,
+                alignment: 'left',
+                width: '*',
+                bold: true,
+              },
+              {
+                text: `${bachelorsData.city}`,
+                alignment: 'right',
+                width: 'auto',
+              }
+            ],
+            style: 'normal',
+          },
+          {
+            columns: [
+              {
+                text: `${bachelorsData.degree} ${bachelorsData.field} | CGPA: ${bachelorsData.cgpa}`,
+                alignment: 'left',
+                width: '*',
+              },
+              {
+                text: `(${bachelorsData.from} - ${bachelorsData.to})`,
+                alignment: 'right',
+                width: 'auto',
+              }
+            ],
+            style: 'normal',
+          }
+        ]),
+        ...(showHsc ? [
+          {
+            columns: [
+              {
+                text: `${hsc.hscschool.toUpperCase()}`,
+                alignment: 'left',
+                width: '*',
+                bold: true,
+              },
+              {
+                text:  `${hsc.hsccity}`,
+                alignment: 'right',
+                width: 'auto',
+              }
+            ],
+            style: 'normal',
+          },
+          {
+            columns: [
+              {
+                text:  `12th | Percentage: ${hsc.hscprecentage}%`,
+                alignment: 'left',
+                width: '*',
+              },
+              {
+                text: `(${hsc.hscfrom} - ${hsc.hscto})`,
+                alignment: 'right',
+                width: 'auto',
+              }
+            ],
+            style: 'normal',
+          }
+        ] : []),
+        ...(showSslc ? [
+          {
+            columns: [
+              {
+                text: `${sslc.sslcschool.toUpperCase()}`,
+                alignment: 'left',
+                width: '*',
+                bold: true,
+              },
+              {
+                text: `${sslc.sslccity}`,
+                alignment: 'right',
+                width: 'auto',
+              }
+            ],
+            style: 'normal',
+          },
+          {
+            columns: [
+              {
+                text: `10th | Percentage: ${sslc.sslcpercentage}%`,
+                alignment: 'left',
+                width: '*',
+              },
+              {
+                text: `(${sslc.sslcfrom} - ${sslc.sslcto})`,
+                alignment: 'right',
+                width: 'auto',
+              }
+            ],
+            style: 'normal',
+          }
+        ] : []),
+        ...(showD ? [
+          {
+            columns: [
+              {
+                text: `${diploma.dcollege.toUpperCase()}`,
+                alignment: 'left',
+                width: '*',
+                bold: true,
+              },
+              {
+                text: `${diploma.dcity}`,
+                alignment: 'right',
+                width: 'auto',
+              }
+            ],
+            style: 'normal',
+          },
+          {
+            columns: [
+              {
+                text: `${diploma.dfield} | Percentage: ${diploma.dpercentage}%`,
+                alignment: 'left',
+                width: '*',
+              },
+              {
+                text: `(${diploma.dfrom} - ${diploma.dto})`,
+                alignment: 'right',
+                width: 'auto',
+              }
+            ],
+            style: 'normal',
+          }
+        ] : []),,
+        {
+          text: 'SKILLS',
+          style: 'sectionHeader',
+        },
+        {
+          canvas: [
+            {
+              type: 'line',
+              x1: 0,
+              y1: 0,
+              x2: 515,
+              y2: 0,
+              lineWidth: 2,
+              color: '#000000'
+            }
+          ],
+          margin: [0, 3, 0, 3]
+        },
+        {
+          text: skills.join(' | '),
+          style: 'normal',
+        },
+        {
+          text: 'PROJECTS',
+          style: 'sectionHeader',
+        },
+        {
+          canvas: [
+            {
+              type: 'line',
+              x1: 0,
+              y1: 0,
+              x2: 515,  
+              y2: 0,
+              lineWidth: 2,
+              color: '#000000'
+            }
+          ],
+          margin: [0, 3, 0, 3] 
+        },
+        ...projects.map((project, index) => ({
+          columns: [
+            {
+              width: '*',
+              stack: [
+                {
+                  text: [
+                    { text: `${index + 1}. ` }, 
+                    { text: `${project.name}`, bold: true },
+                    { text: ` (${project.type})`},
+                  ],
+                  margin: [0,0,0, -8],
+                },
+                {
+                  text: [{ text: `\nTechnologies: `,bold: true,},
+                    {text: `${project.technologies}\n`},],
+                    margin: [10,0,0,0],
+                },
+                {
+                  width: 'auto',
+                  ul: [
+                    { text: `${project.objective}` }
+                  ],
+                  margin: [10, 0, 0, 5],
+                  style: 'list'
+                }
+              ],
+              style: 'normal',
+            },
+            {
+              width: 'auto',
+              text: { text: ` [View Demo]`, link: project.link, color: '#3572EF', alignment: 'right', unbreakable: true,},
+              style: 'normal',
+            }
+          ],
+        })),   
+        {
+          text: 'CERTIFICATIONS',
+          style: 'sectionHeader',
+        },
+        {
+          canvas: [
+            {
+              type: 'line',
+              x1: 0,
+              y1: 0,
+              x2: 515,  
+              y2: 0,
+              lineWidth: 2,
+              color: '#000000'
+            }
+          ],
+          margin: [0, 3, 0, 3] 
+        },
+        {
+          ul: certificates.map(certificate => ({
+            columns: [
+              { text: `${certificate.name} – ${certificate.provider}\n`, margin: [0,0,0,5] },
+              { text: ` [View Credentials]`, link: certificate.credential, color: '#3572EF', alignment: 'right',},
+            ],
+          })),
+          style: 'normal',
+        },
+        {
+          text: 'EXTRACURRICULAR ACTIVITIES',
+          style: 'sectionHeader',
+        },
+        {
+          canvas: [
+            {
+              type: 'line',
+              x1: 0,
+              y1: 0,
+              x2: 515,  
+              y2: 0,
+              lineWidth: 2,
+              color: '#000000'
+            }
+          ],
+          margin: [0, 3, 0, 3] 
+        },
+        {
+          ul: activites.map(activity => ({
+            text: activity,
+            margin: [0, 5, 0, 5], 
+            style: 'normal'
+          })),
+          style: 'list',
+          margin: [0, 0, 0, 5]
+        },
+      ],
+      styles: {
+        header: { fontSize: 14, bold: true },
+        subheader: { fontSize: 12, bold: true },
+        info: { fontSize: 12, margin: [0, 5, 0, 5] },
+        link: { fontSize: 12, color: '#3572EF' },
+        sectionHeader: { fontSize: 12, bold: true, margin: [0, 5, 0, 3] },
+        normal: { fontSize: 11, margin: [0, 3, 0, 5], bold: false },
+      },
+    };
+
+    pdfMake.createPdf(docDefinition).download("Resume.pdf");
   };
 
   return (
@@ -106,8 +431,8 @@ const Resume = () => {
 
               {showHsc && (
                 <>
-                  <h6 className="next">{hsc.school}</h6>
-                  <h6 className="right">{hsc.city}</h6>
+                  <h6 className="next">{hsc.hscschool}</h6>
+                  <h6 className="right">{hsc.hsccity}</h6>
                   <h6>12th | Percentage: {hsc.hscprecentage}%</h6>
                   <h6 className="right">
                     ({hsc.hscfrom} - {hsc.hscto})
@@ -158,23 +483,21 @@ const Resume = () => {
                     <a className="right" href={project.link}>
                       View Demo
                     </a>
-                    <h6>Technologies: {project.technologies}</h6>
-                    <ul className="probj">
-                      <li>{project.objective}</li>
-                    </ul>
+                    <p className="para">Technologies: {project.technologies}</p>
+                    <p className="para">Objective: {project.objective}</p>
                   </li>
                 ))}
               </ol>
             </div>
-            <div className="certificate education">
+            <div className="projects education">
               <h5>CERTIFICATIONS</h5>
               <hr className="line" />
               <ul className="probj">
                 {certificates.map((certificate, index) => (
-                  <li key={index}>
-                    <p className="para">
+                  <li key={index} className="next">
+                    <h6 className="para">
                       {certificate.name} – {certificate.provider}
-                    </p>
+                    </h6>
                     <a className="right" href={certificate.credential}>
                       View Credentials
                     </a>
@@ -182,12 +505,12 @@ const Resume = () => {
                 ))}
               </ul>
             </div>
-            <div className="extracurricular education">
+            <div className="projects education">
               <h5>EXTRACURRICULAR ACTIVITIES</h5>
               <hr className="line" />
               <ul className="probj">
                 {activites.map((activity, index) => (
-                  <li key={index}>
+                  <li key={index} className="next">
                     <p className="para">{activity}</p>
                   </li>
                 ))}
@@ -196,7 +519,7 @@ const Resume = () => {
           </div>
           <button
             className="btn btn-primary download"
-            onClick={() => handleDownload('resume', 'Resume')}
+            onClick={handleDownload}
           >
             Download Resume <FontAwesomeIcon icon={faDownload} />
           </button>

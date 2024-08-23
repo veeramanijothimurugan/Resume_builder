@@ -82,7 +82,7 @@ const Projects = () => {
                 </button>
               </Link>
             )}
-            <button className="btn back-btn next-btn" onClick={()=>{navigation('/skills')}}><FontAwesomeIcon icon={faArrowAltCircleLeft} /> Back</button>
+            <button className="btn back-btn next-btn"><FontAwesomeIcon icon={faArrowAltCircleLeft} /> Back</button>
           </div>
         </div>
       </div>

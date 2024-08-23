@@ -38,7 +38,7 @@ const home = ({ InputTrack }) => {
       <div className="resume-div">
         <img className="bg" src={bg} alt="" />
         <img className="resume-img" src={resume} alt="" />
-        <h1 className="ats">65+ ATS SCORE</h1>
+        <h1 className="ats">60+ ATS SCORE</h1>
       </div>
       <br />
       <div className="welcome container">

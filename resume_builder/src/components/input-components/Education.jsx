@@ -187,7 +187,7 @@ const Education = () => {
               </div>
               <div className="col-lg-6 col-md-6">
                 <p className="lable">
-                  GCPA <span className="alart">*</span>
+                  CGPA <span className="alart">*</span>
                 </p>
                 <input {...register('cgpa',{required: "you must enter the CGPA"})} className={errors.cgpa && "missed"}
                   name="cgpa"
