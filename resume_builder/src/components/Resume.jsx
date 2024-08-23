@@ -14,11 +14,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
-import { text } from "@fortawesome/fontawesome-svg-core";
-
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
-const Resume = () => {
+const resume = () => {
   const { headerDetails } = useContext(headerContext);
   const { objective } = useContext(objectiveContext);
   const { bachelorsData, hsc, sslc, diploma } = useContext(eduContex);
@@ -529,4 +527,4 @@ const Resume = () => {
   );
 };
 
-export default Resume;
+export default resume;

@@ -1,7 +1,7 @@
 import React, { createContext, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
-import Resume from "./components/Resume";
+import Resume from "./components/resume"
 import Heading from "./components/input-components/Heading";
 import Objective from "./components/input-components/Objective";
 import Education from "./components/input-components/Education";
