@@ -12,11 +12,13 @@ import {
 } from "../App";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
-import pdfMake from "pdfmake/build/pdfmake";
-import pdfFonts from "pdfmake/build/vfs_fonts";
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
+import pdfMake from 'pdfmake/build/pdfmake'
+// import pdfMake from 'pdfmake/build/pdfmake';
+// import pdfFonts from 'pdfmake/build/vfs_fonts';
+// pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 const Resume = () => {
+  console.log(pdfMake);
   const { headerDetails } = useContext(headerContext);
   const { objective } = useContext(objectiveContext);
   const { bachelorsData, hsc, sslc, diploma } = useContext(eduContex);
