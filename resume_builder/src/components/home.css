@@ -15,10 +15,12 @@
         font-size: 2rem;
     }
     .resume-img{
-        height: 10% !important;
+        height: 50% !important;
+        width: 30% !important;
+        left: 37% !important;
     }
     .ats{
-        left: 35% !important;
+        left: 30% !important;
         font-size: 25px;
     }
     .welcome,.why,.fixed-temp,.easy-container,.getStart{
@@ -32,13 +34,13 @@
     }
     .resume-img{
         left: 32% !important;
-        height: 200px !important;
+        height: 35% !important;
         width: 40% !important;
     }
     .ats{
-        left: 33% !important;
+        left: 26% !important;
         margin-top: 3%;
-        font-size: 15px;
+        font-size: 2rem !important;
     }
 
     .bg{
