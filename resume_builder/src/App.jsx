@@ -1,7 +1,6 @@
 import React, { createContext, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
-import Resume from "./components/resume"
 import Heading from "./components/input-components/Heading";
 import Objective from "./components/input-components/Objective";
 import Education from "./components/input-components/Education";
@@ -13,6 +12,7 @@ import Navbar from "./components/Navbar";
 import Input from "./components/Input";
 import ProjectDetail from "./components/input-components/ProjectDetail";
 import CertificateDetails from "./components/input-components/CertificateDetails";
+import Resume from "./components/Resume";
 
 export const navigationContext = createContext();
 export const headerContext = createContext();
@@ -178,7 +178,7 @@ function App() {
                               ></Route>
                               <Route
                                 path="/resume"
-                                element={<Resume />}
+                                element={<Resume/>}
                               ></Route>
                               <Route
                                 path="/education"

@@ -16,7 +16,7 @@ import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
-const resume = () => {
+const Resume = () => {
   const { headerDetails } = useContext(headerContext);
   const { objective } = useContext(objectiveContext);
   const { bachelorsData, hsc, sslc, diploma } = useContext(eduContex);
@@ -527,4 +527,4 @@ const resume = () => {
   );
 };
 
-export default resume;
+export default Resume;
