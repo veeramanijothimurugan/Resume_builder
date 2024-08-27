@@ -1,13 +1,9 @@
 import React, { useContext } from "react";
 import pdfMake from 'pdfmake/build/pdfmake';
-import pdfFonts from 'pdfmake/build/vfs_fonts';
+import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 
-// Ensure pdfMake and pdfFonts are correctly imported
-if (pdfMake && pdfFonts) {
-  pdfMake.vfs = pdfFonts.pdfMake.vfs;
-} else {
-  console.error('Failed to import pdfMake or pdfFonts');
-}
+// Set the vfs to the imported pdfFonts
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 
 import "../components/resume.css";

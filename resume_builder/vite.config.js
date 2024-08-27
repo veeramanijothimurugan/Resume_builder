@@ -1,12 +1,13 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import { resolve } from 'path';
 
 export default defineConfig({
   plugins: [react()],
-  build: {
-    rollupOptions: {
-      // Ensure `pdfmake` is included properly in the build
-      external: ['pdfmake/build/pdfmake', 'pdfmake/build/vfs_fonts'],
+  resolve: {
+    alias: {
+      'pdfmake/build/pdfmake': resolve(__dirname, 'node_modules/pdfmake/build/pdfmake.js'),
+      'pdfmake/build/vfs_fonts': resolve(__dirname, 'node_modules/pdfmake/build/vfs_fonts.js'),
     },
   },
 });
