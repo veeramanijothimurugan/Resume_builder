@@ -1,9 +1,5 @@
 import React, { useContext } from "react";
 import pdfMake from 'pdfmake/build/pdfmake';
-import * as pdfFonts from 'pdfmake/build/vfs_fonts';
-
-// Set the vfs to the imported pdfFonts
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 
 import "../components/resume.css";
