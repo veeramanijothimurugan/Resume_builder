@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import pdfMake from 'pdfmake/build/pdfmake';
-import pdfFonts from 'pdfmake/build/vfs_fonts';
+import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+
 
 import "../components/resume.css";
 import {
@@ -16,7 +17,6 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
-
 
 const Resume = () => {
   console.log(pdfMake);
