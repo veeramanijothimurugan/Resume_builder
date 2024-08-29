@@ -1,8 +1,9 @@
 import React, { useContext } from "react";
 import pdfMake from 'pdfmake/build/pdfmake';
-import { vfs } from 'pdfmake/build/vfs_fonts'; // Use object destructuring
-
-pdfMake.vfs = vfs;
+import customFont from '../fonts/base64-custom-font';
+pdfMake.vfs = {
+  'Rubik.ttf': customFont // Map the font name to the Base64 string
+};
 
 
 import "../components/resume.css";
@@ -18,7 +19,7 @@ import {
 } from "../App";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
-
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 const Resume = () => {
   console.log(pdfMake);
@@ -368,12 +369,12 @@ const Resume = () => {
         },
       ],
       styles: {
-        header: { fontSize: 14, bold: true },
-        subheader: { fontSize: 12, bold: true },
-        info: { fontSize: 12, margin: [0, 5, 0, 5] },
-        link: { fontSize: 12, color: '#3572EF' },
-        sectionHeader: { fontSize: 12, bold: true, margin: [0, 5, 0, 3] },
-        normal: { fontSize: 11, margin: [0, 3, 0, 5], bold: false },
+        header: { fontSize: 14, bold: true, font: 'Rubik' },
+        subheader: { fontSize: 12, bold: true, font: 'Rubik' },
+        info: { fontSize: 12, margin: [0, 5, 0, 5], font: 'Rubik' },
+        link: { fontSize: 12, color: '#3572EF', font: 'Rubik' },
+        sectionHeader: { fontSize: 12, bold: true, margin: [0, 5, 0, 3], font: 'Rubik' },
+        normal: { fontSize: 11, margin: [0, 3, 0, 5], bold: false, font: 'Rubik' },
       },
     };
 
