@@ -5,12 +5,15 @@
     padding-top: 5%;
     overflow: auto;
     position: fixed;
+    margin-right: -30px;
+    margin-top: -10px;
 }
 
 @media (max-width: 768px) {
     .traking{
         position: relative;
         padding-top: 15%;
+        margin-right: ;
     }
 }
 
