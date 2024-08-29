@@ -19,7 +19,6 @@ import {
 } from "../App";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 const Resume = () => {
   console.log(pdfMake);
