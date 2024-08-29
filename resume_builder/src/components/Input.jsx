@@ -97,7 +97,7 @@ const Input = ({ submitedPage, length, completeLen }) => {
               <br />
               <div className="copyrights">
                 <p>
-                  © 2024, Designed by <a href="">Veeramani</a>. All rights
+                  © 2024, Designed by <a href="https://www.linkedin.com/in/veeramanijothimurugan/">Veeramani</a>. All rights
                   reserved.
                 </p>
               </div>

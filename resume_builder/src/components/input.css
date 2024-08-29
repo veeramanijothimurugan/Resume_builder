@@ -73,7 +73,7 @@
 }
 
 .copyrights{
-    margin-top: 50%;
+    margin-top: 40%;
     float: inline-end;
     font-size: 12px;
 }
@@ -82,6 +82,7 @@
     color: #00fff2;
     font-size: 13px;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .cnt-icon{
