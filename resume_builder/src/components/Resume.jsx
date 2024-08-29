@@ -1,8 +1,20 @@
 import React, { useContext } from "react";
 import pdfMake from 'pdfmake/build/pdfmake';
-import customFont from '../fonts/base64-custom-font';
+
+import robotoBold from "../fonts/base64-roboto-bold";
+import robotoNormal from "../fonts/base64-roboto-normal";
+
 pdfMake.vfs = {
-  'Rubik.ttf': customFont // Map the font name to the Base64 string
+  'Roboto-Bold.ttf': robotoBold,
+  'Roboto-Regular.ttf': robotoNormal
+
+};
+
+pdfMake.fonts = {
+  Roboto: {
+    normal: 'Roboto-Regular.ttf',
+    bold: 'Roboto-Bold.ttf'
+  }
 };
 
 
@@ -366,14 +378,18 @@ const Resume = () => {
           style: 'list',
           margin: [0, 0, 0, 5]
         },
-      ],
+      ]
+      ,
+  defaultStyle: {
+    font: "Roboto"
+  },
       styles: {
-        header: { fontSize: 14, bold: true, font: 'Rubik' },
-        subheader: { fontSize: 12, bold: true, font: 'Rubik' },
-        info: { fontSize: 12, margin: [0, 5, 0, 5], font: 'Rubik' },
-        link: { fontSize: 12, color: '#3572EF', font: 'Rubik' },
-        sectionHeader: { fontSize: 12, bold: true, margin: [0, 5, 0, 3], font: 'Rubik' },
-        normal: { fontSize: 11, margin: [0, 3, 0, 5], bold: false, font: 'Rubik' },
+        header: { fontSize: 14, bold: true, font: 'Roboto' },
+        subheader: { fontSize: 12, bold: true, font: 'Roboto' },
+        info: { fontSize: 12, margin: [0, 5, 0, 5], font: 'Roboto' },
+        link: { fontSize: 12, color: '#3572EF', font: 'Roboto' },
+        sectionHeader: { fontSize: 12, margin: [0, 5, 0, 3], bold: true, font: 'Roboto' },
+        normal: { fontSize: 11, margin: [0, 3, 0, 5],  font: 'Roboto' },
       },
     };
 
