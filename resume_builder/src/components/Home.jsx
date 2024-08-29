@@ -186,7 +186,7 @@ const home = ({ InputTrack }) => {
               A1(2) Aruppukottai, 626101
             </p>
             <div className="social-icon">
-              <div  className="col-lg-2"><a className="social-icon" href="linkedin.com/in/veeramanijothimurugan/"><FontAwesomeIcon icon={faLinkedinIn}/></a></div>
+              <div  className="col-lg-2"><a className="social-icon" href="https://linkedin.com/in/veeramanijothimurugan/"><FontAwesomeIcon icon={faLinkedinIn}/></a></div>
               <div  className="col-lg-2"><a className="social-icon" href="https://github.com/veeramanijothimurugan"><FontAwesomeIcon icon={faGithub}/></a></div>
           </div>
           </div>
